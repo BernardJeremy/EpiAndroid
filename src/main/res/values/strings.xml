@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">IntraDroid</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+
+    <string name="prompt_login">Login</string>
+    <string name="prompt_password">Password Unix</string>
+    <string name="prompt_connect">Connect</string>
+
+
+    <string name="action_settings">Settings</string>
+
 </resources>
