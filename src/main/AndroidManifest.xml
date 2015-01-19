@@ -23,9 +23,7 @@
         </activity>
         <activity
             android:name=".user"
-
             android:label="@string/title_activity_user" >
-
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
@@ -34,6 +32,10 @@
 
                 <category android:name="@string/category_name" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".planning"
+            android:label="@string/title_activity_planning" >
         </activity>
     </application>
 
