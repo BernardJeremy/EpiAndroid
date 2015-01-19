@@ -2,16 +2,57 @@ package com.intradroid.dt.intradroid;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
 public class LoginActivity extends ActionBarActivity {
+
+    private String TokenJson = "00000000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        final Button mButton = (Button)findViewById(R.id.connect_button);
+        final EditText inputLogin = (EditText)findViewById(R.id.input_login);
+        final EditText inputPassword = (EditText)findViewById(R.id.input_password);
+
+        mButton.setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view)
+                    {
+
+                        try {
+                            RequestAPI request = new RequestAPI();
+
+                            String param[] = {inputLogin.getText().toString(), inputPassword.getText().toString()};
+                            String paramName[] = {"login", "password"};
+                            String result = request.performQuery("login", paramName, param);
+
+                            if (!result.equals("")) {
+                                ObjectMapper mapper = new ObjectMapper();
+                                TokenJSON token = mapper.readValue(result, TokenJSON.class);
+                                TokenJson = token.getToken();
+                                Log.v("TOKEN", "Final Token get from JSON : " + TokenJson);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
 

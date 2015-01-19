@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">IntraDroid</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="category_name">Intranet</string>
+    <string name="title_activity_login">IntraDroid</string>
 
 
     <string name="prompt_login">Login</string>
