@@ -10,20 +10,20 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:name=".LoginActivity"
+            android:label="@string/title_activity" >
         </activity>
         <activity
-            android:name=".subscribe"
-            android:label="@string/title_activity_subscribe" >
+            android:name=".MainActivity"
+            android:label="@string/title_activity" >
         </activity>
         <activity
             android:name=".token"
-            android:label="@string/title_activity_token" >
+            android:label="@string/title_activity" >
         </activity>
         <activity
             android:name=".user"
-            android:label="@string/title_activity_user" >
+            android:label="@string/title_activity" >
 
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"

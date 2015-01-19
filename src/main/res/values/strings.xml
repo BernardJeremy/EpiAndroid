@@ -3,7 +3,7 @@
 
     <string name="app_name">IntraDroid</string>
     <string name="category_name">Intranet</string>
-    <string name="title_activity_login">IntraDroid</string>
+    <string name="title_activity">IntraDroid</string>
 
     <string name="search_hint">Search</string>
     <string name="title_log">Netsoul Log</string>
@@ -25,7 +25,6 @@
     <string name="grades">Grades</string>
     <string name="filter">Filters</string>
     <string name="title_activity_login">LoginActivity</string>
->>>>>>> 8bedda9bd83d284d39abcf17a597797f6c3d103b
     <string name="prompt_login">Login</string>
     <string name="prompt_password">Password Unix</string>
     <string name="prompt_connect">Connect</string>
