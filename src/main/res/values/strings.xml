@@ -5,12 +5,30 @@
     <string name="category_name">Intranet</string>
     <string name="title_activity_login">IntraDroid</string>
 
-
+    <string name="search_hint">Search</string>
+    <string name="title_log">Netsoul Log</string>
+    <string name="title_msg">Messages</string>
+    <string name="time_active">Time active : </string>
+    <string name="time_idle">Time idle : </string>
+    <string name="time_out">Time out active : </string>
+    <string name="time_out_idle">Time out idle : </string>
+    <string name="time_off">Time off : </string>
+    <string name="time_log">Log time : </string>
+    <string name="title_activity_subscribe">subscribe</string>
+    <string name="title_token">Enter your token</string>
+    <string name="text_token">Please enter your token :</string>
+    <string name="empty_token">00000000</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter">Enter</string>
+    <string name="credit">Crédits : </string>
+    <string name="gpa">G.P.A : </string>
+    <string name="grades">Grades</string>
+    <string name="filter">Filters</string>
+    <string name="title_activity_login">LoginActivity</string>
+>>>>>>> 8bedda9bd83d284d39abcf17a597797f6c3d103b
     <string name="prompt_login">Login</string>
     <string name="prompt_password">Password Unix</string>
     <string name="prompt_connect">Connect</string>
-
-
     <string name="action_settings">Settings</string>
 
 </resources>
