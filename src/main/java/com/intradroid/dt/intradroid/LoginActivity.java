@@ -13,10 +13,6 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-
 public class LoginActivity extends ActionBarActivity {
 
     private String TokenJson = "00000000";
