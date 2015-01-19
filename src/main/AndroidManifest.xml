@@ -10,12 +10,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".subscribe"
-            android:label="@string/title_activity_subscribe" >
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name=".token"
@@ -23,7 +23,9 @@
         </activity>
         <activity
             android:name=".user"
+
             android:label="@string/title_activity_user" >
+
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >

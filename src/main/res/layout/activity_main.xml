@@ -30,7 +30,6 @@
                 android:src="@drawable/icon_search">
             </ImageView>
             <EditText
-                android:background="none"
                 android:hint="@string/search_hint"
                 android:inputType="text"
                 android:layout_height="match_parent"
@@ -216,7 +215,7 @@
                     <TextView
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
-                        android:text="14 < 25"
+                        android:text="14 &lt; 25"
                         android:textColor="@color/epitech_grey"
                         android:textSize="@dimen/main_log_size"/>
                 </LinearLayout>
