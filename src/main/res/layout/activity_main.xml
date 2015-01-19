@@ -30,6 +30,7 @@
                 android:src="@drawable/icon_search">
             </ImageView>
             <EditText
+                android:background="#00000000"
                 android:hint="@string/search_hint"
                 android:inputType="text"
                 android:layout_height="match_parent"
