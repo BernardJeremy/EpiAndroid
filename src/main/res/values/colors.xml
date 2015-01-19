@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="epitech_blue">#16b5f0</color>
+    <color name="blue_lighter">#82d2f0</color>
+    <color name="epitech_grey">#303030</color>
+    <color name="epitech_grey_darker">#1a1a1a</color>
+    <color name="epitech_grey_lighter">#404040</color>
+    <color name="grey_inactive">#a3a3a3</color>
+    <color name="green_active">#00ff00</color>
+    <color name="green_idle">#8aff51</color>
+    <color name="red_active">#ff6360</color>
+    <color name="red_idle">#ffbccb</color>
+    <color name="white">#FFF</color>
+</resources>
