@@ -13,6 +13,10 @@
     <string name="time_off">Time off : </string>
     <string name="time_log">Log time : </string>
     <string name="title_activity_subscribe">subscribe</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_token">Token</string>
+    <string name="title_activity_user">User</string>
     <string name="title_token">Enter your token</string>
     <string name="text_token">Please enter your token :</string>
     <string name="empty_token">00000000</string>
@@ -22,7 +26,6 @@
     <string name="gpa">G.P.A : </string>
     <string name="grades">Grades</string>
     <string name="filter">Filters</string>
-    <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_login">Login</string>
     <string name="prompt_password">Password Unix</string>
     <string name="prompt_connect">Connect</string>
