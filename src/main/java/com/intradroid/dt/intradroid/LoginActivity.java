@@ -1,5 +1,6 @@
 package com.intradroid.dt.intradroid;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -46,6 +48,11 @@ public class LoginActivity extends ActionBarActivity {
                                 TokenJSON token = mapper.readValue(result, TokenJSON.class);
                                 TokenJson = token.getToken();
                                 Log.v("TOKEN", "Final Token get from JSON : " + TokenJson);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("token", token.getToken());
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Bad Login or Password", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
