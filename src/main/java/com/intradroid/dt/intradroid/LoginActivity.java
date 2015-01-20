@@ -1,6 +1,7 @@
 package com.intradroid.dt.intradroid;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,8 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_login);
 
         final Button mButton = (Button)findViewById(R.id.connect_button);
@@ -31,7 +34,6 @@ public class LoginActivity extends ActionBarActivity {
                 {
                     public void onClick(View view)
                     {
-
                         try {
                             RequestAPI request = new RequestAPI();
 

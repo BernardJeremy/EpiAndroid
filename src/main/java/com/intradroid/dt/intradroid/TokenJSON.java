@@ -6,6 +6,12 @@ package com.intradroid.dt.intradroid;
 public class TokenJSON {
     private String token = "000000000000000000";
 
+    public TokenJSON() {}
+
+    public TokenJSON(String token) {
+        this.token = token;
+    }
+
     public String getToken() {
         return token;
     }

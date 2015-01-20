@@ -51,6 +51,7 @@
             android:layout_height="@dimen/user_info_size"
             android:layout_width="@dimen/user_info_size"
             android:src="@drawable/dean_winchester">
+            android:id="@+id/img_profil"
         </ImageView>
         <LinearLayout
             android:layout_height="@dimen/user_info_size"
@@ -62,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/user_name_margin_top"
                 android:layout_marginBottom="@dimen/main_user_name_margin_bottom"
+                android:id="@+id/big_name"
                 android:text="Dean Winchester"
                 android:textColor="@color/epitech_grey"
                 android:textSize="@dimen/user_name_size"
@@ -71,18 +73,21 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:text="winche_d"
+                android:id="@+id/login"
                 android:textColor="@color/epitech_grey_lighter"/>
             <TextView
                 android:layout_height="@dimen/main_user_info_height"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:text="Epitech 2017"
+                android:id="@+id/promo"
                 android:textColor="@color/epitech_grey_lighter"/>
             <TextView
                 android:layout_height="@dimen/main_user_info_height"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:text="Cycle Bachelor"
+                android:id="@+id/cycle"
                 android:textColor="@color/epitech_grey_lighter"/>
         </LinearLayout>
     </LinearLayout>
@@ -126,6 +131,7 @@
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
                         android:text="42.0h"
+                        android:id="@+id/time_active"
                         android:textColor="@color/green_active"
                         android:textSize="@dimen/main_log_size"/>
                 </LinearLayout>
@@ -142,6 +148,7 @@
                     <TextView
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
+                        android:id="@+id/time_idle"
                         android:text="42.0h"
                         android:textColor="@color/green_idle"
                         android:textSize="@dimen/main_log_size"/>
@@ -160,6 +167,7 @@
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
                         android:text="42.0h"
+                        android:id="@+id/time_off"
                         android:textColor="@color/grey_inactive"
                         android:textSize="@dimen/main_log_size"/>
                 </LinearLayout>
@@ -181,6 +189,7 @@
                         android:textSize="@dimen/main_log_size"/>
                     <TextView
                         android:layout_height="match_parent"
+                        android:id="@+id/time_out_active"
                         android:layout_width="wrap_content"
                         android:text="42.0h"
                         android:textColor="@color/red_active"
@@ -199,6 +208,7 @@
                     <TextView
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
+                        android:id="@+id/time_out_idle"
                         android:text="42.0h"
                         android:textColor="@color/red_idle"
                         android:textSize="@dimen/main_log_size"/>
@@ -214,6 +224,7 @@
                         android:textColor="@color/epitech_grey"
                         android:textSize="@dimen/main_log_size"/>
                     <TextView
+                        android:id="@+id/time_goal"
                         android:layout_height="match_parent"
                         android:layout_width="wrap_content"
                         android:text="14 &lt; 25"
