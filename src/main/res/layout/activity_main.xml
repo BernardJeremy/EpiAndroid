@@ -229,7 +229,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/main_margin_block"
         android:orientation="vertical"
-        android:padding="@dimen/main_padding_block">
+        android:padding="@dimen/padding_block">
         <TextView
             android:gravity="center_horizontal"
             android:layout_height="@dimen/title_height"
