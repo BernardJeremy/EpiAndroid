@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/user_margin_block"
-        android:padding="@dimen/user_padding_block">
+        android:padding="7dp">
         <ImageView
             android:layout_height="@dimen/user_info_size"
             android:layout_width="@dimen/user_info_size"
@@ -133,7 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/user_margin_block"
-        android:padding="@dimen/user_padding_block"
+        android:padding="@dimen/padding_block"
         android:orientation="horizontal">
         <LinearLayout
         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
         android:layout_height="match_parent"
         android:layout_width="@dimen/table_width"
         android:layout_marginTop="@dimen/user_margin_block"
-        android:padding="@dimen/user_padding_block">
+        android:padding="@dimen/padding_block">
         <LinearLayout
             android:layout_height="@dimen/title_height"
             android:layout_width="match_parent">
