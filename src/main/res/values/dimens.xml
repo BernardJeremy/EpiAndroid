@@ -9,6 +9,11 @@
     <dimen name="header_search_margin_top">20px</dimen>
     <dimen name="header_search_height">75px</dimen>
 
+    <!-- Login -->
+    <dimen name="login_img_size">117dp</dimen>
+    <dimen name="login_input_margin">50dp</dimen>
+    <dimen name="login_button_margin">15dp</dimen>
+
     <!-- General -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
