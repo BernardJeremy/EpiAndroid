@@ -8,6 +8,7 @@
     <dimen name="header_search_margin_left">30px</dimen>
     <dimen name="header_search_margin_top">20px</dimen>
     <dimen name="header_search_height">75px</dimen>
+    <dimen name="header_search_width">280dp</dimen>
 
     <!-- General -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -17,12 +18,11 @@
     <dimen name="none">0dp</dimen>
     <dimen name="filter_size">12sp</dimen>
     <dimen name="padding_block">7dp</dimen>
+    <dimen name="checkbox">20dp</dimen>
 
     <!-- Main page -->
     <dimen name="main_margin_block">30px</dimen>
     <dimen name="main_height_block">500px</dimen>
-    <dimen name="main_user_info_height">25dp</dimen>
-    <dimen name="main_user_name_margin_bottom">10dp</dimen>
     <dimen name="main_log_size">16sp</dimen>
     <dimen name="main_log_margin">20px</dimen>
     <dimen name="main_log_height">75px</dimen>
@@ -50,5 +50,38 @@
     <dimen name="token_title_padding">7dp</dimen>
     <dimen name="token_marge">10dp</dimen>
     <dimen name="token_text_size">16sp</dimen>
+
+    <!-- Border -->
+    <dimen name="border_width">3dp</dimen>
+
+    <!-- Planning -->
+    <dimen name="planning_date">30dp</dimen>
+    <dimen name="planning_week_size">20sp</dimen>
+    <dimen name="planning_week_width">285dp</dimen>
+    <dimen name="planning_arrow_width">30dp</dimen>
+
+    <!-- Day Planning -->
+    <dimen name="day_planning_margin">10dp</dimen>
+    <dimen name="day_planning_date_height">30dp</dimen>
+    <dimen name="day_planning_date_size">16sp</dimen>
+    <dimen name="day_planning_date_padding">5dp</dimen>
+
+    <!-- Slot Planning -->
+    <dimen name="slot_planning_marging">10dp</dimen>
+    <dimen name="slot_planning_img_width">15dp</dimen>
+    <dimen name="slot_planning_slot_marging">20dp</dimen>
+    <dimen name="slot_planning_slot_width">270dp</dimen>
+
+    <!-- Checkbox Img -->
+    <dimen name="checkbox_img_marging">10dp</dimen>
+    <dimen name="checkbox_img_width">15dp</dimen>
+
+    <!-- Checkbox Text -->
+    <dimen name="checkbox_text_size">14sp</dimen>
+    <dimen name="checkbox_text_width">25dp</dimen>
+
+    <!-- Filter Block -->
+    <dimen name="filter_block_title_size">16sp</dimen>
+    <dimen name="filter_block_title_height">25dp</dimen>
 
 </resources>

@@ -3,44 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.intradroid.dt.intradroid.MainActivity">
+    tools:context="com.intradroid.dt.intradroid.planningActivity">
 
-    <RelativeLayout
-        android:background="@color/epitech_grey"
-        android:layout_height="@dimen/header_height"
-        android:layout_width="match_parent"
-        android:padding="@dimen/header_padding">
-        <ImageView
-            android:layout_height="match_parent"
-            android:layout_width="@dimen/header_height"
-            android:src="@drawable/icon_menu">
-        </ImageView>
-        <LinearLayout
-            android:background="@color/epitech_grey_lighter"
-            android:layout_alignParentRight="true"
-            android:layout_height="match_parent"
-            android:layout_width="280dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_height="@dimen/header_search_height"
-                android:layout_width="@dimen/header_search_height"
-                android:layout_marginLeft="@dimen/header_search_margin_left"
-                android:layout_marginTop="@dimen/header_search_margin_top"
-                android:src="@drawable/icon_search">
-            </ImageView>
-            <EditText
-                android:background="#00000000"
-                android:hint="@string/search_hint"
-                android:inputType="text"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/header_search_margin_left"
-                android:layout_width="match_parent"
-                android:textColorHint="@color/epitech_grey_darker"
-                android:textStyle="bold">
-            </EditText>
-        </LinearLayout>
-    </RelativeLayout>
+    <include layout="@layout/activity_header"/>
 
     <LinearLayout
         android:layout_height="match_parent"
@@ -49,96 +14,32 @@
         android:orientation="vertical">
         <LinearLayout
             android:background="@drawable/border"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/planning_date"
+            android:layout_marginBottom="@dimen/planning_date"
             android:layout_width="match_parent">
             <Button
                 android:background="@drawable/icon_arrow_left"
                 android:layout_height="match_parent"
-                android:layout_width="30dp"/>
+                android:layout_width="@dimen/planning_arrow_width"/>
             <TextView
                 android:gravity="center"
                 android:layout_height="match_parent"
-                android:layout_width="285dp"
+                android:layout_width="@dimen/planning_week_width"
                 android:text="Du 05/01 au 11/01"
                 android:textColor="@color/epitech_grey"
-                android:textSize="20sp"
+                android:textSize="@dimen/planning_week_size"
                 android:textStyle="bold"/>
             <Button
                 android:background="@drawable/icon_arrow_right"
                 android:layout_height="match_parent"
-                android:layout_width="30dp"/>
+                android:layout_width="@dimen/planning_arrow_width"/>
         </LinearLayout>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:text="@string/filter"
-            android:textColor="@color/red_active"
-            android:textSize="@dimen/filter_size"
-            android:textStyle="bold"/>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Lundi 5 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
-                    android:textColor="@color/epitech_grey_lighter"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_late_unsubscribe"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_token"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
-                    android:textColor="@color/epitech_grey_lighter"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_late_unsubscribe"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_token"/>
-            </LinearLayout>
-        </LinearLayout>
+
+        <include layout="@layout/filters"/>
+
+        <include layout="@layout/day_planning"/>
+
+        <!-- Delete when day_planning is dynamic -->
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -153,54 +54,9 @@
                 android:textColor="@color/epitech_grey"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
-                    android:textColor="@color/epitech_grey_lighter"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_late_unsubscribe"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_token"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
-                    android:textColor="@color/epitech_grey_lighter"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_late_unsubscribe"/>
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="15dp"
-                    android:src="@drawable/icon_token"/>
-            </LinearLayout>
+
+            <include layout="@layout/slot_planning"/>
+            <include layout="@layout/slot_planning"/>
         </LinearLayout>
         <LinearLayout
             android:layout_height="wrap_content"
@@ -277,6 +133,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
+        <!-- Delete when day_planning is dynamic -->
 
     </LinearLayout>
 

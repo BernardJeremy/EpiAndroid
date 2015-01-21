@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.intradroid.dt.intradroid.FilterActivity">
+
+    <include layout="@layout/activity_header"/>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_block">
+        <TextView
+            android:layout_height="@dimen/title_height"
+            android:layout_width="match_parent"
+            android:padding="@dimen/padding_block"
+            android:text="Filters :"
+            android:textColor="@color/epitech_blue"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+
+        <include layout="@layout/filter_block"/>
+
+        <!-- Delete when filter_block is dynamic -->
+        <LinearLayout
+            android:background="@drawable/border"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_block">
+            <TextView
+                android:layout_height="25dp"
+                android:layout_width="match_parent"
+                android:text="Susie : "
+                android:textColor="@color/epitech_grey"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <include layout="@layout/checkbox_img"/>
+
+            <!-- Delete when checkbox_img is dynamic -->
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:button="@drawable/checkbox"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="20dp"/>
+                <ImageView
+                    android:layout_gravity="end"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="15dp"
+                    android:src="@drawable/icon_susie_inactive"/>
+            </LinearLayout>
+            <!-- Delete when checkbox_img is dynamic -->
+        </LinearLayout>
+        <!-- Delete when filter_block is dynamic -->
+    </LinearLayout>
+</LinearLayout>

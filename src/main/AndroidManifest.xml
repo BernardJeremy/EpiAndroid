@@ -37,6 +37,14 @@
             android:name=".planning"
             android:label="@string/title_activity_planning" >
         </activity>
+        <activity
+            android:name=".Filter"
+            android:label="@string/title_activity_filter" >
+        </activity>
+        <activity
+            android:name=".Header"
+            android:label="@string/title_activity_header" >
+        </activity>
     </application>
 
 </manifest>

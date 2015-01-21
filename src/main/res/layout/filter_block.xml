@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/border"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_block">
+    <TextView
+        android:layout_height="@dimen/filter_block_title_height"
+        android:layout_width="match_parent"
+        android:text="Student filters :"
+        android:textColor="@color/epitech_grey"
+        android:textSize="@dimen/filter_block_title_size"
+        android:textStyle="bold"/>
+
+    <include layout="@layout/checkbox_text"/>
+    <!-- Delete when checkbox_text is dynamic -->
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <CheckBox
+            android:button="@drawable/checkbox"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="20dp"/>
+        <TextView
+            android:layout_height="25dp"
+            android:layout_width="match_parent"
+            android:text="Modules I'm registered only"
+            android:textColor="@color/epitech_grey"
+            android:textSize="14sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <CheckBox
+            android:button="@drawable/checkbox"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="20dp"/>
+        <TextView
+            android:layout_height="25dp"
+            android:layout_width="match_parent"
+            android:text="Events to which I am registered only"
+            android:textColor="@color/epitech_grey"
+            android:textSize="14sp"/>
+    </LinearLayout>
+    <!-- Delete when checkbox_text is dynamic -->
+</LinearLayout>
