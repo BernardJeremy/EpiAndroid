@@ -7,12 +7,12 @@
     tools:context="com.intradroid.dt.intradroid.LoginActivity">
 
     <ImageView
-        android:layout_width="117dp"
-        android:layout_height="117dp"
+        android:layout_width="@dimen/login_img_size"
+        android:layout_height="@dimen/login_img_size"
         android:id="@+id/logo"
         android:src="@drawable/logo2"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/user_margin_block"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -25,9 +25,9 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginTop="@dimen/main_user_name_margin_bottom"
+        android:layout_marginRight="@dimen/login_input_margin"
+        android:layout_marginLeft="@dimen/login_input_margin"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -41,17 +41,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginRight="@dimen/login_input_margin"
+        android:layout_marginLeft="@dimen/login_input_margin"
+        android:layout_marginTop="@dimen/main_user_name_margin_bottom" />
 
     <Button
+        android:background="@color/epitech_blue"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/prompt_connect"
         android:id="@+id/connect_button"
         android:layout_below="@+id/input_password"
+        android:layout_gravity="end"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="@dimen/login_button_margin" />
 
 </RelativeLayout>
