@@ -98,8 +98,14 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
+                    android:layout_width="wrap_content"
+                    android:text="- 9h00-12h00 : "
+                    android:textColor="@color/epitech_grey_lighter"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="175dp"
+                    android:text=" B5 - EIP Validation"
                     android:textColor="@color/epitech_grey_lighter"/>
                 <ImageView
                     android:layout_gravity="end"
@@ -122,8 +128,14 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
+                    android:layout_width="wrap_content"
+                    android:text="- 9h00-12h00 : "
+                    android:textColor="@color/epitech_grey_lighter"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="175dp"
+                    android:text=" B5 - EIP Validation"
                     android:textColor="@color/epitech_grey_lighter"/>
                 <ImageView
                     android:layout_gravity="end"
@@ -161,8 +173,14 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
+                    android:layout_width="wrap_content"
+                    android:text="- 9h00-12h00 : "
+                    android:textColor="@color/epitech_grey_lighter"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="175dp"
+                    android:text=" B5 - EIP Validation"
                     android:textColor="@color/epitech_grey_lighter"/>
                 <ImageView
                     android:layout_gravity="end"
@@ -185,8 +203,14 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_width="270dp"
-                    android:text="- B5 - EIP Validation"
+                    android:layout_width="wrap_content"
+                    android:text="- 9h00-12h00 : "
+                    android:textColor="@color/epitech_grey_lighter"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="175dp"
+                    android:text=" B5 - EIP Validation"
                     android:textColor="@color/epitech_grey_lighter"/>
                 <ImageView
                     android:layout_gravity="end"
