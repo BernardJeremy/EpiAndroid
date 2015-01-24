@@ -3,44 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.intradroid.dt.intradroid.MainActivity">
+    tools:context="com.intradroid.dt.intradroid.FilterActivity">
 
-    <RelativeLayout
-        android:background="@color/epitech_grey"
-        android:layout_height="@dimen/header_height"
-        android:layout_width="match_parent"
-        android:padding="@dimen/header_padding">
-        <ImageView
-            android:layout_height="match_parent"
-            android:layout_width="@dimen/header_height"
-            android:src="@drawable/icon_menu">
-        </ImageView>
-        <LinearLayout
-            android:background="@color/epitech_grey_lighter"
-            android:layout_alignParentRight="true"
-            android:layout_height="match_parent"
-            android:layout_width="280dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_height="@dimen/header_search_height"
-                android:layout_width="@dimen/header_search_height"
-                android:layout_marginLeft="@dimen/header_search_margin_left"
-                android:layout_marginTop="@dimen/header_search_margin_top"
-                android:src="@drawable/icon_search">
-            </ImageView>
-            <EditText
-                android:background="#00000000"
-                android:hint="@string/search_hint"
-                android:inputType="text"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/header_search_margin_left"
-                android:layout_width="match_parent"
-                android:textColorHint="@color/epitech_grey_darker"
-                android:textStyle="bold">
-            </EditText>
-        </LinearLayout>
-    </RelativeLayout>
+    <include layout="@layout/activity_header"/>
+
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -54,6 +20,10 @@
             android:textColor="@color/epitech_blue"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"/>
+
+        <include layout="@layout/filter_block"/>
+
+        <!-- Delete when filter_block is dynamic -->
         <LinearLayout
             android:background="@drawable/border"
             android:layout_height="wrap_content"
@@ -64,68 +34,33 @@
             <TextView
                 android:layout_height="25dp"
                 android:layout_width="match_parent"
-                android:text="Student filters :"
+                android:text="Susie : "
                 android:textColor="@color/epitech_grey"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
+
+            <include layout="@layout/checkbox_img"/>
+
+            <!-- Delete when checkbox_img is dynamic -->
             <LinearLayout
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
                 <CheckBox
-                    android:background="@drawable/checkbox"
+                    android:button="@drawable/checkbox"
                     android:layout_height="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_width="25dp"/>
-                <TextView
-                    android:layout_height="25dp"
-                    android:layout_width="match_parent"
-                    android:text="Modules in my current semester"
-                    android:textColor="@color/epitech_grey"
-                    android:textSize="14sp"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="20dp"/>
+                <ImageView
+                    android:layout_gravity="end"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="15dp"
+                    android:src="@drawable/icon_susie_inactive"/>
             </LinearLayout>
-            <TextView
-                android:layout_height="25dp"
-                android:layout_width="match_parent"
-                android:text="Modules I'm registered only"
-                android:textColor="@color/epitech_grey"
-                android:textSize="14sp"/>
-            <TextView
-                android:layout_height="25dp"
-                android:layout_width="match_parent"
-                android:text="Events to which I am registered only"
-                android:textColor="@color/epitech_grey"
-                android:textSize="14sp"/>
+            <!-- Delete when checkbox_img is dynamic -->
         </LinearLayout>
-        <LinearLayout
-            android:background="@drawable/border"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_block">
-            <TextView
-                android:layout_height="25dp"
-                android:layout_width="match_parent"
-                android:text="Filter module / activity / teacher"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:background="@drawable/border"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_block">
-            <TextView
-                android:layout_height="25dp"
-                android:layout_width="match_parent"
-                android:text="Susie"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        <!-- Delete when filter_block is dynamic -->
     </LinearLayout>
 </LinearLayout>

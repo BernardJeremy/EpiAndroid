@@ -1,0 +1,23 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="@dimen/table_width"
+    android:layout_marginTop="@dimen/user_margin_block"
+    android:padding="@dimen/padding_block">
+    <LinearLayout
+        android:layout_height="@dimen/title_height"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_height="@dimen/title_height"
+            android:layout_width="@dimen/user_title_grade"
+            android:text="@string/grades"
+            android:textColor="@color/epitech_grey"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+
+        <include layout="@layout/filters"/>
+    </LinearLayout>
+
+    <include layout="@layout/table_row_blue"/>
+    <include layout="@layout/table_row"/>
+    <include layout="@layout/table_row_blue"/>
+</TableLayout>

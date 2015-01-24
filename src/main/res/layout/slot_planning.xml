@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/slot_planning_marging"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/slot_planning_slot_marging"
+        android:layout_width="wrap_content"
+        android:text="- 9h00-12h00 : "
+        android:textColor="@color/epitech_grey_lighter"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="@dimen/slot_planning_slot_width"
+        android:text=" B5 - EIP Validation"
+        android:textColor="@color/epitech_grey_lighter"/>
+    <ImageView
+        android:layout_gravity="end"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/slot_planning_marging"
+        android:layout_width="@dimen/slot_planning_img_width"
+        android:src="@drawable/icon_late_unsubscribe"/>
+    <ImageView
+        android:layout_gravity="end"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/slot_planning_marging"
+        android:layout_width="@dimen/slot_planning_img_width"
+        android:src="@drawable/icon_token"/>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+    <CheckBox
+        android:button="@drawable/checkbox"
+        android:layout_height="@dimen/checkbox"
+        android:layout_marginLeft="@dimen/checkbox"
+        android:layout_width="@dimen/checkbox"/>
+    <ImageView
+        android:layout_gravity="end"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/checkbox_img_marging"
+        android:layout_width="@dimen/checkbox_img_width"
+        android:src="@drawable/icon_susie_active"/>
+</LinearLayout>

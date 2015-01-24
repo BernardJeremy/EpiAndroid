@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30px"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="De :"
+        android:textColor="@color/epitech_grey"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="jfeajfrioj aerfioe rjfiojr aeiojri jaeiorj io gjreiogjr ferozj giorj zeijgrzeiogj iozegioerj erge rg erninreizgri gzeriguizerng ze"
+        android:textColor="@color/epitech_grey"/>
+</LinearLayout>

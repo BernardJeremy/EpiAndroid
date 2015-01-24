@@ -38,16 +38,12 @@
             android:label="@string/title_activity_planning" >
         </activity>
         <activity
-            android:name=".filter"
-            android:label="@string/title_activity_filter" >
-        </activity>
-        <activity
             android:name=".Filter"
             android:label="@string/title_activity_filter" >
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main_activity2" >
+            android:name=".Header"
+            android:label="@string/title_activity_header" >
         </activity>
     </application>
 
