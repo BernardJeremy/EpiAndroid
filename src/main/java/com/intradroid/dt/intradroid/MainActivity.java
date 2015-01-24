@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
         String paramName[] = {"token"};
         String result = request.performQuery("infos", paramName, param);
 
-        Log.v("DONE Query", "RESULT" + result);
+        //Log.v("DONE Query", "RESULT" + result);
 
         try {
             if (!result.equals("")) {
@@ -47,11 +48,27 @@ public class MainActivity extends ActionBarActivity {
                 final TextView login = (TextView) findViewById(R.id.login);
                 final TextView promo = (TextView) findViewById(R.id.promo);
                 final TextView cycle = (TextView) findViewById(R.id.cycle);
+                final TextView active = (TextView) findViewById(R.id.time_active);
+                final TextView time_goal = (TextView) findViewById(R.id.time_goal);
+                final LinearLayout messageBox = (LinearLayout) findViewById(R.id.messages);
 
-                name.setText(infos.getTitle());
-                login.setText(infos.getLogin());
-                promo.setText(infos.getSchool_title() + " " + infos.getPromo());
-                cycle.setText("Cycle " + infos.getCourse_code());
+                name.setText(infos.getInfos().getTitle());
+                login.setText(infos.getInfos().getLogin());
+                promo.setText(infos.getInfos().getSchool_title() + " " + infos.getInfos().getPromo());
+                cycle.setText("Cycle " + infos.getInfos().getCourse_code());
+                active.setText(infos.getCurrent().getActive_log().substring(0, infos.getCurrent().getActive_log().lastIndexOf(".")) + "h");
+                time_goal.setText(infos.getCurrent().getActive_log().substring(0, infos.getCurrent().getActive_log().lastIndexOf(".")) + "h < " + infos.getCurrent().getNslog_min() + "h");
+                for (history history : infos.getHistory()) {
+                    TextView from = new TextView(this);
+                    TextView content = new TextView(this);
+                    from.setText("De " + history.getTitle());
+                    content.setText(history.getUser().getTitle());
+                    messageBox.addView(from);
+                    int idx = messageBox.indexOfChild(from);
+                    from.setTag(Integer.toString(idx));
+                    idx = messageBox.indexOfChild(content);
+                    from.setTag(Integer.toString(idx));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

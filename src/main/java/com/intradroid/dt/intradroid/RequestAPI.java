@@ -119,8 +119,8 @@ public class RequestAPI {
             result.append(line);
         }
 
-        Log.v("perform Query", result.toString());
-        Log.v("perform Query", "Type : " + type);
+        //Log.v("perform Query", result.toString());
+        //Log.v("perform Query", "Type : " + type);
 
         return result.toString();
 
@@ -157,7 +157,7 @@ public class RequestAPI {
             result.append(line);
         }
 
-        Log.v("perform Query", result.toString());
+        //Log.v("perform Query", result.toString());
         return result.toString();
     }
 
