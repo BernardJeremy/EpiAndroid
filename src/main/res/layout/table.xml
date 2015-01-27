@@ -7,6 +7,7 @@
         android:layout_height="@dimen/title_height"
         android:layout_width="match_parent">
         <TextView
+            android:id="@+id/title_grades"
             android:layout_height="@dimen/title_height"
             android:layout_width="@dimen/user_title_grade"
             android:text="@string/grades"

@@ -19,6 +19,16 @@ public class current {
 
     private String achieved;
 
+    private String semester_code;
+
+    public String getSemester_code() {
+        return semester_code;
+    }
+
+    public void setSemester_code(String semester_code) {
+        this.semester_code = semester_code;
+    }
+
     public String getAchieved() {
         return achieved;
     }

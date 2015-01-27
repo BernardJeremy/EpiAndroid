@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URL;
@@ -30,7 +31,7 @@ public class user extends MenuDrawer {
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
         boolean isMark = intent.getBooleanExtra("isMark", false);
-        current = 1;
+        current = isMark ? 1 : 2;
 
         RequestAPI request = new RequestAPI();
 
@@ -38,31 +39,64 @@ public class user extends MenuDrawer {
         String paramName[] = {"token"};
         String result = request.performQuery("infos", paramName, param);
 
-        String resultMark = request.performQuery("marks", paramName, param);
+        String resultMark = request.performQuery(isMark ? "marks" : "all_modules", paramName, param);
 
         try {
             if (!result.equals("")) {
-
-                ObjectMapper mapper = new ObjectMapper();
-                result.replace("class", "_class");
-                resultMark = resultMark.replace("notes", "\"notes\"");
-                InfoJSON infos = mapper.readValue(result, InfoJSON.class);
-                MarksJson markObj = mapper.readValue(resultMark, MarksJson.class);
-                Notes marks[] = markObj.getNotes();
-                marks = Arrays.copyOfRange(markObj.getNotes(), marks.length - 20, marks.length);
-                Collections.reverse(Arrays.asList(marks));
-
                 setContentView(R.layout.activity_user);
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+
+                InfoJSON infos = mapper.readValue(result, InfoJSON.class);
+                if (isMark) {
+                    MarksJson markObj = mapper.readValue(resultMark, MarksJson.class);
+                    Notes marks[] = markObj.getNotes();
+                    marks = Arrays.copyOfRange(markObj.getNotes(), marks.length - 20, marks.length);
+                    Collections.reverse(Arrays.asList(marks));
+                    this.setMarks(marks);
+                } else {
+                    ModuleJSON markObj = mapper.readValue(resultMark, ModuleJSON.class);
+                    Modules marks[] = markObj.getModules();
+                    marks = Arrays.copyOfRange(markObj.getModules(), marks.length - 20, marks.length);
+                    Collections.reverse(Arrays.asList(marks));
+                    this.setModules(marks);
+                }
 
                 initMenuDrawer();
                 Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this);
 
                 this.setAllData(infos);
                 this.setProfileImage(infos);
-                this.setMarks(marks);
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setModules(Modules modules[]) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout parent = (LinearLayout) findViewById(R.id.grades_title_linear);
+
+        TextView titleGrade = (TextView) findViewById(R.id.title_grades);
+        titleGrade.setText("Modules");
+
+        int i = 0;
+        View table;
+
+        for (Modules module : modules) {
+            parent.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+            if (i % 2 != 0) {
+                table = inflater.inflate(R.layout.table_row, null);
+            } else {
+                table = inflater.inflate(R.layout.table_row_blue, null);
+            }
+            TextView title = (TextView) table.findViewById(R.id.grades_title);
+            TextView value = (TextView) table.findViewById(R.id.grades_value);
+            title.setText(module.getTitle());
+            value.setText(module.getGrade());
+            table.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+            parent.addView(table);
+            i += 1;
         }
     }
 

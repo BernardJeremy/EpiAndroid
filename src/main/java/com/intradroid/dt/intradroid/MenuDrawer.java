@@ -82,7 +82,8 @@ public class MenuDrawer extends ActionBarActivity {
                 isMark = true;
                 break;
             case 2:
-                System.out.println("Modules");
+                intent = new Intent(this, user.class);
+                isMark = false;
                 break;
             case 3:
                 System.out.println("Planning");
