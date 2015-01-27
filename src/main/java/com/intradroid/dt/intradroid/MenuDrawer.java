@@ -1,10 +1,18 @@
 package com.intradroid.dt.intradroid;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Created by bernar_w on 27/01/2015.
@@ -16,6 +24,7 @@ public class MenuDrawer extends ActionBarActivity {
     private ListView list;
 
     protected String token;
+    protected int current;
 
     public MenuDrawer ()
     {
@@ -26,8 +35,6 @@ public class MenuDrawer extends ActionBarActivity {
         menuItem= getResources().getStringArray(R.array.items_menu);
         layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         list = (ListView) findViewById(R.id.left_drawer);
-
-        System.out.println(list);
 
         ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
 
@@ -44,16 +51,35 @@ public class MenuDrawer extends ActionBarActivity {
 
         list.setOnItemClickListener(new DrawerItemClickListener());
 
+        this.setClickButton();
+
+    }
+
+    private void setClickButton()
+    {
+        ImageView button = (ImageView) findViewById(R.id.button_menu);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (layout.isDrawerOpen(Gravity.LEFT)) {
+                    layout.closeDrawer(Gravity.LEFT);
+                } else {
+                    layout.openDrawer(Gravity.LEFT);
+                }
+            }});
     }
 
     private void selectItem(int position)
     {
+        Intent intent = null;
+        boolean isMark = false;
+
         switch (position) {
             case 0:
-                System.out.println("Home");
                 break;
             case 1:
-                System.out.println("Marks");
+                intent = new Intent(this, user.class);
+                isMark = true;
                 break;
             case 2:
                 System.out.println("Modules");
@@ -61,12 +87,25 @@ public class MenuDrawer extends ActionBarActivity {
             case 3:
                 System.out.println("Planning");
                 break;
-        default:
-            break;
+            default:
+                break;
         }
+
+        if (position != 0 && intent != null && this.current != position) {
+            intent.putExtra("token", token);
+            intent.putExtra("isMark", isMark);
+            startActivity(intent);
+        } else if (intent != null){
+            Toast.makeText(this, "Already on this page !", Toast.LENGTH_SHORT).show();
+        }
+
         list.setItemChecked(position, true);
         list.setSelection(position);
         layout.closeDrawer(list);
+
+        if (position == 0 && current != 0) {
+            finish();
+        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

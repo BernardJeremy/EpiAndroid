@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">IntraDroid</string>
-    <string name="title_activity_main">Main</string>
+    <string name="title_activity_main">Home</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_token">Token</string>
     <string name="title_activity_user">User</string>

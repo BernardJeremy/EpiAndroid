@@ -6,6 +6,7 @@
     android:padding="@dimen/header_padding"
     tools:context="com.intradroid.dt.intradroid.Header">
     <ImageView
+        android:id="@+id/button_menu"
         android:layout_height="match_parent"
         android:layout_width="@dimen/header_height"
         android:src="@drawable/icon_menu">

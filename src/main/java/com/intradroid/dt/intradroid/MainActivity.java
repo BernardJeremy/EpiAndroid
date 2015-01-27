@@ -29,6 +29,7 @@ public class MainActivity extends MenuDrawer {
 
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
+        current = 0;
 
         RequestAPI request = new RequestAPI();
 

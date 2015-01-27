@@ -28,7 +28,7 @@
                 <include layout="@layout/user_info" android:id="@+id/user_info"/>
 
                 <LinearLayout
-                    android:layout_height="@dimen/main_height_block"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/main_margin_block"
                     android:orientation="vertical"
@@ -70,84 +70,15 @@
                                     android:textColor="@color/green_active"
                                     android:textSize="@dimen/main_log_size"/>
                             </LinearLayout>
-                            <LinearLayout
-                                android:layout_height="@dimen/main_log_height"
-                                android:layout_width="match_parent">
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="@dimen/main_log_size"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/time_idle"
-                                    android:textColor="@color/green_idle"
-                                    android:textSize="@dimen/main_log_size"/>
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_width="wrap_content"
-                                    android:id="@+id/time_idle"
-                                    android:text="42.0h"
-                                    android:textColor="@color/green_idle"
-                                    android:textSize="@dimen/main_log_size"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_height="@dimen/main_log_height"
-                                android:layout_width="match_parent">
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="@dimen/main_log_size"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/time_off"
-                                    android:textColor="@color/grey_inactive"
-                                    android:textSize="@dimen/main_log_size"/>
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_width="wrap_content"
-                                    android:text="42.0h"
-                                    android:id="@+id/time_off"
-                                    android:textColor="@color/grey_inactive"
-                                    android:textSize="@dimen/main_log_size"/>
-                            </LinearLayout>
+
                         </LinearLayout>
                         <LinearLayout
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:layout_width="@dimen/none"
                             android:orientation="vertical">
-                            <LinearLayout
-                                android:layout_height="@dimen/main_log_height"
-                                android:layout_width="match_parent">
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="@dimen/main_log_size"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/time_out"
-                                    android:textColor="@color/red_active"
-                                    android:textSize="@dimen/main_log_size"/>
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:id="@+id/time_out_active"
-                                    android:layout_width="wrap_content"
-                                    android:text="42.0h"
-                                    android:textColor="@color/red_active"
-                                    android:textSize="@dimen/main_log_size"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_height="@dimen/main_log_height"
-                                android:layout_width="match_parent">
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="@dimen/main_log_size"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/time_out_idle"
-                                    android:textColor="@color/red_idle"
-                                    android:textSize="@dimen/main_log_size"/>
-                                <TextView
-                                    android:layout_height="match_parent"
-                                    android:layout_width="wrap_content"
-                                    android:id="@+id/time_out_idle"
-                                    android:text="42.0h"
-                                    android:textColor="@color/red_idle"
-                                    android:textSize="@dimen/main_log_size"/>
-                            </LinearLayout>
+
+
                             <LinearLayout
                                 android:layout_height="@dimen/main_log_height"
                                 android:layout_width="match_parent">
