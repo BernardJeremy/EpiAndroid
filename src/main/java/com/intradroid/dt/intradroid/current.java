@@ -17,6 +17,16 @@ public class current {
 
     private String nslog_min;
 
+    private String achieved;
+
+    public String getAchieved() {
+        return achieved;
+    }
+
+    public void setAchieved(String achieved) {
+        this.achieved = achieved;
+    }
+
     public String getActive_log() {
         return active_log;
     }

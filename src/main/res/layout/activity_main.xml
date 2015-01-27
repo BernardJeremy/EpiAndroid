@@ -1,3 +1,7 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +11,7 @@
 
     <include layout="@layout/activity_header"/>
 
-    <include layout="@layout/user_info"/>
+    <include layout="@layout/user_info" android:id="@+id/user_info"/>
 
     <LinearLayout
         android:layout_height="@dimen/main_height_block"
@@ -153,6 +157,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/messages"
         android:layout_height="@dimen/main_height_block"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/main_margin_block"
@@ -168,8 +173,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/title_size"/>
 
-        <include layout="@layout/messages"/>
     </LinearLayout>
 
-
 </LinearLayout>
+</ScrollView>

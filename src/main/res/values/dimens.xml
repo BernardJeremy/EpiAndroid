@@ -28,6 +28,8 @@
     <!-- Main page -->
     <dimen name="main_margin_block">30px</dimen>
     <dimen name="main_height_block">500px</dimen>
+    <dimen name="main_user_info_height">25dp</dimen>
+    <dimen name="main_user_name_margin_bottom">10dp</dimen>
     <dimen name="main_log_size">16sp</dimen>
     <dimen name="main_log_margin">20px</dimen>
     <dimen name="main_log_height">75px</dimen>
