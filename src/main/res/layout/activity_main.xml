@@ -1,179 +1,207 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.intradroid.dt.intradroid.MainActivity">
+    android:layout_height="match_parent" >
 
-    <include layout="@layout/activity_header"/>
-
-    <include layout="@layout/user_info" android:id="@+id/user_info"/>
-
-    <LinearLayout
-        android:layout_height="@dimen/main_height_block"
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/main_margin_block"
+        android:layout_height="match_parent" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/padding_block">
-        <TextView
-            android:gravity="center_horizontal"
-            android:layout_height="@dimen/title_height"
-            android:layout_marginBottom="80px"
+        tools:context="com.intradroid.dt.intradroid.MainActivity">
+
+        <include layout="@layout/activity_header"/>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:text="@string/title_log"
-            android:textColor="@color/epitech_grey"
-            android:textStyle="bold"
-            android:textSize="@dimen/title_size"/>
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_width="@dimen/none"
+                android:layout_width="match_parent"
                 android:orientation="vertical">
+
+                <include layout="@layout/user_info" android:id="@+id/user_info"/>
+
                 <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
+                    android:layout_height="@dimen/main_height_block"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/main_margin_block"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_block">
                     <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_active"
-                        android:textColor="@color/green_active"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"
-                        android:text="42.0h"
-                        android:id="@+id/time_active"
-                        android:textColor="@color/green_active"
-                        android:textSize="@dimen/main_log_size"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_idle"
-                        android:textColor="@color/green_idle"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"
-                        android:id="@+id/time_idle"
-                        android:text="42.0h"
-                        android:textColor="@color/green_idle"
-                        android:textSize="@dimen/main_log_size"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_off"
-                        android:textColor="@color/grey_inactive"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"
-                        android:text="42.0h"
-                        android:id="@+id/time_off"
-                        android:textColor="@color/grey_inactive"
-                        android:textSize="@dimen/main_log_size"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_width="@dimen/none"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_out"
-                        android:textColor="@color/red_active"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:id="@+id/time_out_active"
-                        android:layout_width="wrap_content"
-                        android:text="42.0h"
-                        android:textColor="@color/red_active"
-                        android:textSize="@dimen/main_log_size"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_out_idle"
-                        android:textColor="@color/red_idle"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_width="wrap_content"
-                        android:id="@+id/time_out_idle"
-                        android:text="42.0h"
-                        android:textColor="@color/red_idle"
-                        android:textSize="@dimen/main_log_size"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="@dimen/main_log_height"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/main_log_size"
-                        android:layout_width="wrap_content"
-                        android:text="@string/time_log"
+                        android:gravity="center_horizontal"
+                        android:layout_height="@dimen/title_height"
+                        android:layout_marginBottom="80px"
+                        android:layout_width="match_parent"
+                        android:text="@string/title_log"
                         android:textColor="@color/epitech_grey"
-                        android:textSize="@dimen/main_log_size"/>
-                    <TextView
-                        android:id="@+id/time_goal"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/title_size"/>
+                    <LinearLayout
                         android:layout_height="match_parent"
-                        android:layout_width="wrap_content"
-                        android:text="14 &lt; 25"
-                        android:textColor="@color/epitech_grey"
-                        android:textSize="@dimen/main_log_size"/>
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_width="@dimen/none"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_active"
+                                    android:textColor="@color/green_active"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:text="42.0h"
+                                    android:id="@+id/time_active"
+                                    android:textColor="@color/green_active"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_idle"
+                                    android:textColor="@color/green_idle"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/time_idle"
+                                    android:text="42.0h"
+                                    android:textColor="@color/green_idle"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_off"
+                                    android:textColor="@color/grey_inactive"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:text="42.0h"
+                                    android:id="@+id/time_off"
+                                    android:textColor="@color/grey_inactive"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_width="@dimen/none"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_out"
+                                    android:textColor="@color/red_active"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/time_out_active"
+                                    android:layout_width="wrap_content"
+                                    android:text="42.0h"
+                                    android:textColor="@color/red_active"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_out_idle"
+                                    android:textColor="@color/red_idle"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/time_out_idle"
+                                    android:text="42.0h"
+                                    android:textColor="@color/red_idle"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_height="@dimen/main_log_height"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/main_log_size"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/time_log"
+                                    android:textColor="@color/epitech_grey"
+                                    android:textSize="@dimen/main_log_size"/>
+                                <TextView
+                                    android:id="@+id/time_goal"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:text="14 &lt; 25"
+                                    android:textColor="@color/epitech_grey"
+                                    android:textSize="@dimen/main_log_size"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/messages"
+                    android:layout_height="@dimen/main_height_block"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/main_margin_block"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_block">
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_height="@dimen/title_height"
+                        android:layout_marginBottom="80px"
+                        android:layout_width="match_parent"
+                        android:text="@string/title_msg"
+                        android:textColor="@color/epitech_grey"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/title_size"/>
+
+                </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/messages"
-        android:layout_height="@dimen/main_height_block"
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/main_margin_block"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_block">
-        <TextView
-            android:gravity="center_horizontal"
-            android:layout_height="@dimen/title_height"
-            android:layout_marginBottom="80px"
-            android:layout_width="match_parent"
-            android:text="@string/title_msg"
-            android:textColor="@color/epitech_grey"
-            android:textStyle="bold"
-            android:textSize="@dimen/title_size"/>
+        </ScrollView>
 
     </LinearLayout>
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#111"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
-</LinearLayout>
-</ScrollView>
+</android.support.v4.widget.DrawerLayout>

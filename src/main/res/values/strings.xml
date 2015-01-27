@@ -34,4 +34,11 @@
     <string name="prompt_password">Password Unix</string>
     <string name="prompt_connect">Connect</string>
 
+    <string-array name="items_menu">
+        <item>Home</item>
+        <item>Marks</item>
+        <item>Modules</item>
+        <item>Planning</item>
+    </string-array>
+
 </resources>
