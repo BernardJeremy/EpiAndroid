@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONObject;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -21,8 +24,6 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_login);
 
         final Button mButton = (Button)findViewById(R.id.connect_button);
@@ -37,20 +38,31 @@ public class LoginActivity extends ActionBarActivity {
                         try {
                             RequestAPI request = new RequestAPI();
 
+                            System.out.println("CONNECTING");
                             String param[] = {inputLogin.getText().toString(), inputPassword.getText().toString()};
                             String paramName[] = {"login", "password"};
-                            String result = request.performQuery("login", paramName, param);
 
-                            if (!result.equals("")) {
-                                ObjectMapper mapper = new ObjectMapper();
-                                TokenJSON token = mapper.readValue(result, TokenJSON.class);
-                                TokenJson = token.getToken();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("token", token.getToken());
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Bad Login or Password", Toast.LENGTH_SHORT).show();
-                            }
+                            request.performQuery("login", paramName, param, new JsonHttpResponseHandler() {
+
+                                @Override
+                                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                                    try {
+                                        ObjectMapper mapper = new ObjectMapper();
+                                        TokenJSON token = mapper.readValue(String.valueOf(response), TokenJSON.class);
+                                        TokenJson = token.getToken();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.putExtra("token", token.getToken());
+                                        startActivity(intent);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse) {
+                                    Toast.makeText(LoginActivity.this, "Bad Login or Password", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                         } catch (Exception e) {
                             e.printStackTrace();

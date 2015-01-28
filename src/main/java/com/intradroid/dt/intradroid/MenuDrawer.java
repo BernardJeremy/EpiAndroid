@@ -3,6 +3,8 @@ package com.intradroid.dt.intradroid;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
@@ -10,8 +12,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.BinaryHttpResponseHandler;
+
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -32,7 +38,7 @@ public class MenuDrawer extends ActionBarActivity {
 
     protected void initMenuDrawer()
     {
-        menuItem= getResources().getStringArray(R.array.items_menu);
+        menuItem = getResources().getStringArray(R.array.items_menu);
         layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         list = (ListView) findViewById(R.id.left_drawer);
 
@@ -116,5 +122,46 @@ public class MenuDrawer extends ActionBarActivity {
             selectItem(position);
         }
 
+    }
+
+    public void setAllData(InfoJSON infos)
+    {
+        final TextView credit = (TextView) findViewById(R.id.credit);
+        final TextView name = (TextView) findViewById(R.id.big_name);
+        final TextView login = (TextView) findViewById(R.id.login);
+        final TextView promo = (TextView) findViewById(R.id.promo);
+        final TextView cycle = (TextView) findViewById(R.id.cycle);
+
+        name.setText(infos.getInfos().getTitle());
+        login.setText(infos.getInfos().getLogin());
+        promo.setText(infos.getInfos().getSchool_title() + " " + infos.getInfos().getPromo());
+        cycle.setText("Cycle " + infos.getInfos().getCourse_code());
+        credit.setText(infos.getCurrent().getAchieved());
+    }
+
+    public void setProfileImage(InfoJSON infos)
+    {
+        try {
+            RequestAPI request = new RequestAPI();
+            System.out.println("setProfileIMG");
+            request.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + infos.getInfos().getLogin() + ".jpg", new BinaryHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] fileData) {
+                    System.out.println("Load Img OK");
+                    final ImageView photo = (ImageView) findViewById(R.id.photo);
+
+                    Bitmap bmp = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
+                    photo.setImageBitmap(bmp);
+                }
+
+                @Override
+                public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] binaryData, java.lang.Throwable error)
+                {
+                    System.out.println("Fail Load Img");
+                }
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
