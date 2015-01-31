@@ -17,9 +17,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONObject;
 
-public class LoginActivity extends ActionBarActivity {
-
-    private String TokenJson = "00000000";
+public class LoginActivity extends ActivityManagement {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +34,21 @@ public class LoginActivity extends ActionBarActivity {
                     public void onClick(View view)
                     {
                         try {
-                            RequestAPI request = new RequestAPI();
 
                             System.out.println("CONNECTING");
                             String param[] = {inputLogin.getText().toString(), inputPassword.getText().toString()};
                             String paramName[] = {"login", "password"};
 
-                            request.performQuery("login", paramName, param, new JsonHttpResponseHandler() {
+                            RequestAPI.performQuery("login", paramName, param, new JsonHttpResponseHandler() {
 
                                 @Override
                                 public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
                                     try {
-                                        ObjectMapper mapper = new ObjectMapper();
-                                        TokenJSON token = mapper.readValue(String.valueOf(response), TokenJSON.class);
+                                        String TokenJson;
+                                        TokenJSON token = RequestAPI.getMapper().readValue(String.valueOf(response), TokenJSON.class);
                                         TokenJson = token.getToken();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("token", token.getToken());
+                                        intent.putExtra("token", TokenJson);
                                         startActivity(intent);
                                     } catch (Exception e) {
                                         e.printStackTrace();

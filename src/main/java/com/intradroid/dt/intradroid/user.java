@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import java.util.Collections;
 
 
-public class user extends MenuDrawer {
+public class user extends ActivityManagement {
 
     boolean isMark;
 
@@ -35,8 +35,6 @@ public class user extends MenuDrawer {
         isMark = intent.getBooleanExtra("isMark", false);
         current = isMark ? 1 : 2;
 
-        RequestAPI request = new RequestAPI();
-
         String param[] = {token};
         String paramName[] = {"token"};
 
@@ -44,16 +42,15 @@ public class user extends MenuDrawer {
         initMenuDrawer();
         Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+        RequestAPI.getMapper().configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 
-        request.performQuery("infos", paramName, param, new JsonHttpResponseHandler() {
+        RequestAPI.performQuery("infos", paramName, param, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
                 try {
                     String result = String.valueOf(response);
 
-                    InfoJSON infos = mapper.readValue(result, InfoJSON.class);
+                    InfoJSON infos = RequestAPI.getMapper().readValue(result, InfoJSON.class);
 
                     setAllData(infos);
                     setProfileImage(infos);
@@ -64,20 +61,20 @@ public class user extends MenuDrawer {
             }
         });
 
-        request.performQuery(isMark ? "marks" : "all_modules", paramName, param, new JsonHttpResponseHandler() {
+        RequestAPI.performQuery(isMark ? "marks" : "all_modules", paramName, param, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
                 try {
                     String result = String.valueOf(response);
 
                     if (isMark) {
-                        MarksJson markObj = mapper.readValue(result, MarksJson.class);
+                        MarksJson markObj = RequestAPI.getMapper().readValue(result, MarksJson.class);
                         Notes marks[] = markObj.getNotes();
                         marks = Arrays.copyOfRange(markObj.getNotes(), marks.length - 20, marks.length);
                         Collections.reverse(Arrays.asList(marks));
                         setMarks(marks);
                     } else {
-                        ModuleJSON markObj = mapper.readValue(result, ModuleJSON.class);
+                        ModuleJSON markObj = RequestAPI.getMapper().readValue(result, ModuleJSON.class);
                         Modules marks[] = markObj.getModules();
                         marks = Arrays.copyOfRange(markObj.getModules(), marks.length - 20, marks.length);
                         Collections.reverse(Arrays.asList(marks));

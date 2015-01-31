@@ -23,9 +23,7 @@ import org.json.JSONObject;
 import java.net.URL;
 
 
-public class MainActivity extends MenuDrawer {
-
-
+public class MainActivity extends ActivityManagement {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +33,19 @@ public class MainActivity extends MenuDrawer {
         token = intent.getStringExtra("token");
         current = 0;
 
-        RequestAPI request = new RequestAPI();
-
         String param[] = {token};
         String paramName[] = {"token"};
-        request.performQuery("infos", paramName, param, new JsonHttpResponseHandler() {
+        RequestAPI.performQuery("infos", paramName, param, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
                 try {
                     String result = String.valueOf(response);
                     if (!result.equals("")) {
-                        ObjectMapper mapper = new ObjectMapper();
 
                         result.replace("class", "_class");
 
-                        InfoJSON infos = mapper.readValue(result, InfoJSON.class);
+                        InfoJSON infos = RequestAPI.getMapper().readValue(result, InfoJSON.class);
                         setContentView(R.layout.activity_main);
 
                         initMenuDrawer();

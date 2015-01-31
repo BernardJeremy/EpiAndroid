@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.loopj.android.http.BinaryHttpResponseHandler;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,25 +29,37 @@ public class Header extends ActionBarActivity {
         setContentView(R.layout.activity_header);
     }
 
-    public static void displayPhoto(ActionBarActivity context, EditText input){
+    public static void displayPhoto(final ActionBarActivity context, EditText input){
         try {
-            Toast toast = new Toast(context.getApplicationContext());
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setDuration(Toast.LENGTH_LONG);
-            ImageView toastView = new ImageView(context.getApplicationContext());
-            URL url = new URL("https://cdn.local.epitech.eu/userprofil/profilview/" + input.getText().toString() + ".jpg");
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            if (bmp == null) {
-                Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            bmp = Bitmap.createScaledBitmap(bmp, 450, 500, false);
-            toastView.setImageBitmap(bmp);
-            toast.setView(toastView);
-            toast.show();
+
+            RequestAPI.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + input.getText().toString() + ".jpg", new BinaryHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] fileData) {
+                    Toast toast = new Toast(context);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    ImageView toastView = new ImageView(context.getApplicationContext());
+
+                    Bitmap bmp = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
+                    if (bmp == null) {
+                        Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
+                    } else {
+                        bmp = Bitmap.createScaledBitmap(bmp, 450, 500, false);
+                        toastView.setImageBitmap(bmp);
+                        toast.setView(toastView);
+                        toast.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] binaryData, java.lang.Throwable error)
+                {
+                    Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } catch (Exception e) {
             Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
-            return;
         }
     }
 

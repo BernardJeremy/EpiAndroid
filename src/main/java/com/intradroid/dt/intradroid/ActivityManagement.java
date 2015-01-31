@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by bernar_w on 27/01/2015.
  */
-public class MenuDrawer extends ActionBarActivity {
+public class ActivityManagement extends ActionBarActivity {
 
     private String[] menuItem;
     private DrawerLayout layout;
@@ -32,7 +32,7 @@ public class MenuDrawer extends ActionBarActivity {
     protected String token;
     protected int current;
 
-    public MenuDrawer ()
+    public ActivityManagement ()
     {
     }
 
@@ -142,9 +142,7 @@ public class MenuDrawer extends ActionBarActivity {
     public void setProfileImage(InfoJSON infos)
     {
         try {
-            RequestAPI request = new RequestAPI();
-            System.out.println("setProfileIMG");
-            request.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + infos.getInfos().getLogin() + ".jpg", new BinaryHttpResponseHandler() {
+            RequestAPI.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + infos.getInfos().getLogin() + ".jpg", new BinaryHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] fileData) {
                     System.out.println("Load Img OK");

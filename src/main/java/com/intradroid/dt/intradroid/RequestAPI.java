@@ -6,22 +6,19 @@ package com.intradroid.dt.intradroid;
 
 import android.util.Log;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loopj.android.http.*;
 
 import java.util.Hashtable;
 
 public class RequestAPI {
 
-    private String url = "https://epitech-api.herokuapp.com/";
-    private AsyncHttpClient client = new AsyncHttpClient();
-    AsyncHttpClient clientImg = new AsyncHttpClient(true, 80, 443);
-    private String value = null;
+    final static private String url = "https://epitech-api.herokuapp.com/";
+    final static private AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
+    final static private ObjectMapper mapper = new ObjectMapper();
 
-    private Hashtable<String, String> QueryTypeMap;
-    private Hashtable<String, String> RealQueryMap;
-
-    public RequestAPI() {
-
+    final static private Hashtable<String, String> QueryTypeMap;
+    static {
         QueryTypeMap = new Hashtable<String, String>();
         QueryTypeMap.put("login", "login");
         QueryTypeMap.put("infos", "infos");
@@ -48,7 +45,10 @@ public class RequestAPI {
         QueryTypeMap.put("photo", "photo");
         QueryTypeMap.put("token", "token");
         QueryTypeMap.put("trombi", "trombi");
+    }
 
+    final static private Hashtable<String, String> RealQueryMap;
+    static {
         RealQueryMap = new Hashtable<String, String>();
         RealQueryMap.put("login", "GET");
         RealQueryMap.put("infos", "POST");
@@ -77,15 +77,18 @@ public class RequestAPI {
         RealQueryMap.put("trombi", "GET");
     }
 
-    public void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    private RequestAPI() {
+    }
+
+    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
        client.get(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    public void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    public RequestParams prepareParams(String paramName[], String param[])
+    public static RequestParams prepareParams(String paramName[], String param[])
     {
         RequestParams params = new RequestParams();
 
@@ -95,11 +98,13 @@ public class RequestAPI {
         return (params);
     }
 
-    private String getAbsoluteUrl(String relativeUrl) {
+    private static String getAbsoluteUrl(String relativeUrl) {
         return url + relativeUrl;
     }
 
-    public void performQuery(String type, String paramName[], String param[], JsonHttpResponseHandler responseHandler){
+    public static ObjectMapper getMapper() { return mapper; }
+
+    public static void performQuery(String type, String paramName[], String param[], JsonHttpResponseHandler responseHandler){
         try {
 
             System.out.println("Request : " + QueryTypeMap.get(type) + " in " + RealQueryMap.get(type));
@@ -115,8 +120,8 @@ public class RequestAPI {
         }
     }
 
-    public void getImageQuery(String url, BinaryHttpResponseHandler responseHandler)
+    public static void getImageQuery(String url, BinaryHttpResponseHandler responseHandler)
     {
-        clientImg.get(url, null, responseHandler);
+        client.get(url, null, responseHandler);
     }
 }
