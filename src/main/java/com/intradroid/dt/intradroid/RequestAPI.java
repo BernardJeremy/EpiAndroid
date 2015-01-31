@@ -4,6 +4,7 @@ package com.intradroid.dt.intradroid;
  * Created by bernar_w on 13/01/2015.
  */
 
+import android.content.Context;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -116,6 +117,17 @@ public class RequestAPI {
             } else {
                post(QueryTypeMap.get(type), prepareParams(paramName, param), responseHandler);
             }
+
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
+        }
+    }
+
+    public static void performDelete(String type, String paramName[], String param[], Context context,JsonHttpResponseHandler responseHandler){
+        try {
+
+            System.out.println("Request : " + QueryTypeMap.get(type) + " in delete");
+            client.delete(context, getAbsoluteUrl(url), null, prepareParams(paramName, param), responseHandler);
 
         } catch (Exception e) {
             Log.v("EXCEPTION", e.toString());
