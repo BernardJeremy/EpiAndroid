@@ -49,7 +49,7 @@ public class MainActivity extends ActivityManagement {
                         setContentView(R.layout.activity_main);
 
                         initMenuDrawer();
-                        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), MainActivity.this);
+                        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), MainActivity.this, token);
 
                         setProfileImage(infos);
                         setAllData(infos);

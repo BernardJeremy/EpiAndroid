@@ -14,8 +14,6 @@
             android:textColor="@color/epitech_grey"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"/>
-
-        <include layout="@layout/filters"/>
     </LinearLayout>
 
 </TableLayout>

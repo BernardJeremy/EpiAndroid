@@ -45,6 +45,7 @@ public class RequestAPI {
         QueryTypeMap.put("photo", "photo");
         QueryTypeMap.put("token", "token");
         QueryTypeMap.put("trombi", "trombi");
+        QueryTypeMap.put("user", "user");
     }
 
     final static private Hashtable<String, String> RealQueryMap;
@@ -75,6 +76,7 @@ public class RequestAPI {
         RealQueryMap.put("photo", "GET");
         RealQueryMap.put("token", "POST");
         RealQueryMap.put("trombi", "GET");
+        RealQueryMap.put("user", "GET");
     }
 
     private RequestAPI() {

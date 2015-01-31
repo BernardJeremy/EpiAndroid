@@ -1,5 +1,6 @@
 package com.intradroid.dt.intradroid;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
@@ -28,47 +29,18 @@ public class Header extends ActionBarActivity {
         setContentView(R.layout.activity_header);
     }
 
-    public static void displayPhoto(final ActionBarActivity context, EditText input){
-        try {
-
-            RequestAPI.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + input.getText().toString() + ".jpg", new BinaryHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] fileData) {
-                    Toast toast = new Toast(context);
-                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    ImageView toastView = new ImageView(context.getApplicationContext());
-
-                    Bitmap bmp = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
-                    if (bmp == null) {
-                        Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
-                    } else {
-                        bmp = Bitmap.createScaledBitmap(bmp, 450, 500, false);
-                        toastView.setImageBitmap(bmp);
-                        toast.setView(toastView);
-                        toast.show();
-                    }
-                }
-
-                @Override
-                public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] binaryData, java.lang.Throwable error)
-                {
-                    Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(context.getApplicationContext(), "Bad Login", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public static void searchOnEvent(ImageView img, final EditText input, final ActionBarActivity context)
+    public static void searchOnEvent(ImageView img, final EditText input, final ActionBarActivity context, final String token)
     {
 
         input.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    Header.displayPhoto(context, input);
+                    Intent intent = new Intent(context, Rapport.class);
+                    intent.putExtra("token", token);
+                    String user = input.getText().toString();
+                    System.out.println("IN HEADER : " + user);
+                    intent.putExtra("user", user);
+                    context.startActivity(intent);
                     return true;
                 }
                 return false;
@@ -80,7 +52,11 @@ public class Header extends ActionBarActivity {
             public void onClick(View view)
             {
                 if (!input.getText().toString().isEmpty()) {
-                    Header.displayPhoto(context, input);
+                    Intent intent = new Intent(context, Rapport.class);
+                    intent.putExtra("token", token);
+                    String user = input.getText().toString();
+                    intent.putExtra("user", user);
+                    context.startActivity(intent);
                 }
             }
         });

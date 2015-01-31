@@ -38,7 +38,7 @@
     <!-- User Info -->
     <dimen name="user_margin_block">30px</dimen>
     <dimen name="user_info_size">450px</dimen>
-    <dimen name="user_info_margin">35px</dimen>
+    <dimen name="user_info_margin">20px</dimen>
     <dimen name="user_name_height">150px</dimen>
     <dimen name="user_name_size">19sp</dimen>
     <dimen name="user_name_margin_top">20px</dimen>

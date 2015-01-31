@@ -40,7 +40,7 @@ public class user extends ActivityManagement {
 
         setContentView(R.layout.activity_user);
         initMenuDrawer();
-        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this);
+        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this, token);
 
         RequestAPI.getMapper().configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 

@@ -69,7 +69,7 @@ public class planning extends ActivityManagement {
         setContentView(R.layout.activity_planning);
 
         initMenuDrawer();
-        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this);
+        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this, token);
 
         setDateWeek(time);
 
