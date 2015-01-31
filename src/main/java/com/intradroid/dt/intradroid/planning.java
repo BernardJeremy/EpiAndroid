@@ -11,15 +11,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.AsExistingPropertyTypeSerializer;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import android.text.format.Time;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,7 +32,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class planning extends ActionBarActivity {
+public class planning extends ActivityManagement {
 
     private String token;
     static private String[] name_days = {
@@ -51,45 +54,62 @@ public class planning extends ActionBarActivity {
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
 
-        Calendar time = Calendar.getInstance();
+        current = 3;
+
+        final Calendar time = Calendar.getInstance();
         //time.set(2015, 01, 01);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String current_day = dateFormat.format(time.getTime());
 
-        final RequestAPI request = new RequestAPI();
         String param[] = {token, current_day, current_day};
         //String param[] = {token, "2015-02-02", "2015-02-02"};
         String paramName[] = {"token", "start", "end"};
-        String result = request.performQuery("planning", paramName, param);
 
-        try {
-            setContentView(R.layout.activity_planning);
-            setDateWeek(time);
-            if (!result.equals("{}")) {
-                ObjectMapper mapper = new ObjectMapper();
+        setContentView(R.layout.activity_planning);
 
-                result.replace("class", "_class");
+        initMenuDrawer();
+        Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), this);
 
-                EventPlanningJSON event_planning[] = mapper.readValue(result, EventPlanningJSON[].class);
+        setDateWeek(time);
 
-                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                LinearLayout days_parent = (LinearLayout) findViewById(R.id.filters);
-                for (int i = 0; i < 7; i++) {
-                    View days = inflater.inflate(R.layout.day_planning, null);
-                    TextView day = (TextView) days.findViewById(R.id.day);
-                    day.setText(getDateDay(time, i));
-                    days.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                    days_parent.addView(days);
-                    LinearLayout day_block = (LinearLayout) findViewById(R.id.day_block);
-                    day_block.setId(1000 + i);
-                    click_day(day, request, time, dateFormat, i);
-                    create_slot(request, time, i, event_planning, dateFormat);
+        RequestAPI.performQuery("planning", paramName, param, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                try {
+                    if (!String.valueOf(response).equals("{}")) {
+
+                        String.valueOf(response).replace("class", "_class");
+
+                        EventPlanningJSON event_planning[] = RequestAPI.getMapper().readValue(String.valueOf(response), EventPlanningJSON[].class);
+
+                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        LinearLayout days_parent = (LinearLayout) findViewById(R.id.filters);
+                        for (int i = 0; i < 7; i++) {
+                            View days = inflater.inflate(R.layout.day_planning, null);
+                            TextView day = (TextView) days.findViewById(R.id.day);
+                            day.setText(getDateDay(time, i));
+                            days.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                            days_parent.addView(days);
+                            LinearLayout day_block = (LinearLayout) findViewById(R.id.day_block);
+                            day_block.setId(1000 + i);
+                            click_day(day, time, dateFormat, i);
+                            create_slot(time, i, event_planning, dateFormat);
+                        }
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            @Override
+            public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse) {
+
+            }
+        });
+
+
     }
 
     private String getHour(String time)
@@ -172,7 +192,7 @@ public class planning extends ActionBarActivity {
             sub.setImageResource(R.drawable.icon_subscribe);
     }
 
-    private void subscribe(final EventPlanningJSON event, final ImageView sub, final RequestAPI request)
+    private void subscribe(final EventPlanningJSON event, final ImageView sub)
     {
         sub.setOnClickListener(
             new View.OnClickListener()
@@ -183,15 +203,23 @@ public class planning extends ActionBarActivity {
                         String param[] = {token, Integer.toString(event.getScolaryear()), event.getCodemodule(),
                                 event.getCodeinstance(), event.getCodeacti(), event.getCodeevent()};
                         String paramName[] = {"token", "scolaryear", "codemodule", "codeinstance", "codeacti", "codeevent"};
-                        String result = request.performQuery("subscribe_event", paramName, param);
+                        RequestAPI.performQuery("subscribe_event", paramName, param, new JsonHttpResponseHandler() {
 
-                        if (result.contains("{\t}"))
-                        {
-                            event.setEvent_registered("registered");
-                            setSubIcon(sub, event);
-                        } else {
-                            Toast.makeText(planning.this, result, Toast.LENGTH_SHORT).show();
-                        }
+                            @Override
+                            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                                if (String.valueOf(response).contains("{\t}"))
+                                {
+                                    event.setEvent_registered("registered");
+                                    setSubIcon(sub, event);
+                                } else {
+                                    Toast.makeText(planning.this, String.valueOf(response), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse) {
+                            }
+                        });
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -219,7 +247,7 @@ public class planning extends ActionBarActivity {
         return (time);
     }
 
-    private void click_day(final TextView day, final RequestAPI request, final Calendar time, final DateFormat dateFormat, final int i)
+    private void click_day(final TextView day, final Calendar time, final DateFormat dateFormat, final int i)
     {
         day.setOnClickListener(
                 new View.OnClickListener()
@@ -231,47 +259,60 @@ public class planning extends ActionBarActivity {
                             String current_day = dateFormat.format(new_time.getTime());
                             String param[] = {token, current_day, current_day};
                             String paramName[] = {"token", "start", "end"};
-                            String result = request.performQuery("planning", paramName, param);
+                            RequestAPI.performQuery("planning", paramName, param, new JsonHttpResponseHandler() {
 
-                            if (!result.equals("{}")) {
-                                ObjectMapper mapper = new ObjectMapper();
+                                @Override
+                                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                                    try {
+                                        if (!String.valueOf(response).equals("{}")) {
 
-                                result.replace("class", "_class");
+                                            String.valueOf(response).replace("class", "_class");
 
-                                EventPlanningJSON event_planning[] = mapper.readValue(result, EventPlanningJSON[].class);
+                                            EventPlanningJSON event_planning[] = RequestAPI.getMapper().readValue(String.valueOf(response), EventPlanningJSON[].class);
 
-                                //if (i == time.get(Calendar.DAY_OF_WEEK) - 2)
-                                //{
-                                    LayoutInflater inflater_child = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                    LinearLayout event_parent;
-                                    event_parent = (LinearLayout) findViewById(1000 + i);
-                                    for (int j = 0; j < event_planning.length - 1; j++)
-                                    {
-                                        if (/*event_planning[j].getStart().contains(dateFormat.format(time.getTime())) &&*/ event_planning[j].getSemester() == 5 || event_planning[j].getSemester() == 0) // change 5 by user_semester
-                                        {
-                                            if (event_planning[j].isModule_registered())
+                                            //if (i == time.get(Calendar.DAY_OF_WEEK) - 2)
+                                            //{
+                                            LayoutInflater inflater_child = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                            LinearLayout event_parent;
+                                            event_parent = (LinearLayout) findViewById(1000 + i);
+                                            for (int j = 0; j < event_planning.length - 1; j++)
                                             {
-                                                if (event_planning[j].getEvent_registered() != null && (event_planning[j].getEvent_registered().equals("present") || event_planning[j].getEvent_registered().equals("registered")))
+                                                if (/*event_planning[j].getStart().contains(dateFormat.format(time.getTime())) &&*/ event_planning[j].getSemester() == 5 || event_planning[j].getSemester() == 0) // change 5 by user_semester
                                                 {
-                                                    View slot_planning = inflater_child.inflate(R.layout.slot_planning, null);
-                                                    TextView hours = (TextView) slot_planning.findViewById(R.id.hours);
-                                                    hours.setText("-" + getHour(event_planning[j].getStart()) + "-" + getHour(event_planning[j].getEnd()) + ": ");
-                                                    TextView name = (TextView) slot_planning.findViewById(R.id.name);
-                                                    name.setText(event_planning[j].getTitlemodule() + " - " + event_planning[j].getActi_title() + " - " +
-                                                            event_planning[j].getType_title() + " - " + (event_planning[j].getRoom()).getCode());
-                                                    ImageView sub = (ImageView) slot_planning.findViewById(R.id.sub);
-                                                    setSubIcon(sub, event_planning[j]);
-                                                    subscribe(event_planning[j], sub, request);
-                                                    ImageView token = (ImageView) slot_planning.findViewById(R.id.token);
-                                                    setTokenIcon(token, event_planning[j]);
-                                                    slot_planning.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                                                    event_parent.addView(slot_planning);
+                                                    if (event_planning[j].isModule_registered())
+                                                    {
+                                                        if (event_planning[j].getEvent_registered() != null && (event_planning[j].getEvent_registered().equals("present") || event_planning[j].getEvent_registered().equals("registered")))
+                                                        {
+                                                            View slot_planning = inflater_child.inflate(R.layout.slot_planning, null);
+                                                            TextView hours = (TextView) slot_planning.findViewById(R.id.hours);
+                                                            hours.setText("-" + getHour(event_planning[j].getStart()) + "-" + getHour(event_planning[j].getEnd()) + ": ");
+                                                            TextView name = (TextView) slot_planning.findViewById(R.id.name);
+                                                            name.setText(event_planning[j].getTitlemodule() + " - " + event_planning[j].getActi_title() + " - " +
+                                                                    event_planning[j].getType_title() + " - " + (event_planning[j].getRoom()).getCode());
+                                                            ImageView sub = (ImageView) slot_planning.findViewById(R.id.sub);
+                                                            setSubIcon(sub, event_planning[j]);
+                                                            subscribe(event_planning[j], sub);
+                                                            ImageView token = (ImageView) slot_planning.findViewById(R.id.token);
+                                                            setTokenIcon(token, event_planning[j]);
+                                                            slot_planning.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                                            event_parent.addView(slot_planning);
+                                                        }
+                                                    }
                                                 }
                                             }
+                                            //}
                                         }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
-                                //}
-                            }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse) {
+                                }
+                            });
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -279,7 +320,7 @@ public class planning extends ActionBarActivity {
                 });
     }
 
-    private void create_slot(RequestAPI request, Calendar time, int i, EventPlanningJSON[] event_planning, DateFormat dateFormat)
+    private void create_slot(Calendar time, int i, EventPlanningJSON[] event_planning, DateFormat dateFormat)
     {
         if (i == time.get(Calendar.DAY_OF_WEEK) - 2)
         {
@@ -302,7 +343,7 @@ public class planning extends ActionBarActivity {
                                     event_planning[j].getType_title() + " - " + (event_planning[j].getRoom()).getCode());
                             ImageView sub = (ImageView) slot_planning.findViewById(R.id.sub);
                             setSubIcon(sub, event_planning[j]);
-                            subscribe(event_planning[j], sub, request);
+                            subscribe(event_planning[j], sub);
                             ImageView token = (ImageView) slot_planning.findViewById(R.id.token);
                             setTokenIcon(token, event_planning[j]);
                             slot_planning.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));

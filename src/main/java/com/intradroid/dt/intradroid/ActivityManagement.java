@@ -92,7 +92,7 @@ public class ActivityManagement extends ActionBarActivity {
                 isMark = false;
                 break;
             case 3:
-                System.out.println("Planning");
+                intent = new Intent(this, planning.class);
                 break;
             default:
                 break;
