@@ -7,134 +7,44 @@
 
     <include layout="@layout/activity_header"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:padding="@dimen/padding_block"
-        android:orientation="vertical">
+        android:layout_width="match_parent">
         <LinearLayout
-            android:background="@drawable/border"
-            android:layout_height="@dimen/planning_date"
-            android:layout_marginBottom="@dimen/planning_date"
-            android:layout_width="match_parent">
-            <Button
-                android:background="@drawable/icon_arrow_left"
-                android:layout_height="match_parent"
-                android:layout_width="@dimen/planning_arrow_width"/>
-            <TextView
-                android:gravity="center"
-                android:layout_height="match_parent"
-                android:layout_width="@dimen/planning_week_width"
-                android:text="Du 05/01 au 11/01"
-                android:textColor="@color/epitech_grey"
-                android:textSize="@dimen/planning_week_size"
-                android:textStyle="bold"/>
-            <Button
-                android:background="@drawable/icon_arrow_right"
-                android:layout_height="match_parent"
-                android:layout_width="@dimen/planning_arrow_width"/>
-        </LinearLayout>
-
-        <include layout="@layout/filters"/>
-
-        <include layout="@layout/day_planning"/>
-
-        <!-- Delete when day_planning is dynamic -->
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:id="@+id/day"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:padding="@dimen/padding_block"
             android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Mardi 6 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <include layout="@layout/slot_planning"/>
-            <include layout="@layout/slot_planning"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Mercredi 7 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Jeudi 8 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
             <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:orientation="vertical">
+                android:background="@drawable/border"
+                android:layout_height="@dimen/planning_date"
+                android:layout_marginBottom="@dimen/planning_date"
+                android:layout_width="match_parent">
+                <Button
+                    android:background="@drawable/icon_arrow_left"
+                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/planning_arrow_width"/>
                 <TextView
-                    android:background="@drawable/border"
-                    android:layout_height="30dp"
-                    android:layout_width="match_parent"
-                    android:padding="5dp"
-                    android:text="Vendredi 9 janvier"
+                    android:gravity="center"
+                    android:id="@+id/date_week"
+                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/planning_week_width"
+                    android:text="Du 00/00 au 00/00"
                     android:textColor="@color/epitech_grey"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/planning_week_size"
                     android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Samedi 10 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:background="@drawable/border"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:text="Dimanche 11 janvier"
-                android:textColor="@color/epitech_grey"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <!-- Delete when day_planning is dynamic -->
+                <Button
+                    android:background="@drawable/icon_arrow_right"
+                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/planning_arrow_width"/>
+            </LinearLayout>
 
-    </LinearLayout>
+            <include layout="@layout/filters"/>
+
+            <!-- Add days in java -->
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

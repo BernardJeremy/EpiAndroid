@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/day_block"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/day_planning_margin"
     android:layout_width="match_parent"
     android:orientation="vertical">
     <TextView
         android:background="@drawable/border"
+        android:id="@+id/day"
         android:layout_height="@dimen/day_planning_date_height"
+        android:layout_marginBottom="@dimen/padding_block"
         android:layout_width="match_parent"
         android:padding="@dimen/day_planning_date_padding"
         android:text="Lundi 5 janvier"
@@ -14,6 +17,6 @@
         android:textSize="@dimen/day_planning_date_size"
         android:textStyle="bold"/>
 
-    <include layout="@layout/slot_planning"/>
-    <include layout="@layout/slot_planning"/>
+    <!-- Add slot in java -->
+
 </LinearLayout>

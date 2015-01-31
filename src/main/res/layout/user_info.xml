@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/user_name_margin_top"
             android:layout_marginBottom="@dimen/user_name_margin_bottom"
+            android:id="@+id/big_name"
             android:text="Dean Winchester"
             android:textColor="@color/epitech_grey"
             android:textSize="@dimen/user_name_size"
@@ -26,18 +27,21 @@
             android:layout_height="@dimen/user_info_height"
             android:layout_marginLeft="@dimen/user_info_marging_left"
             android:layout_width="match_parent"
+            android:id="@+id/login"
             android:text="winche_d"
             android:textColor="@color/epitech_grey_lighter"/>
         <TextView
             android:layout_height="@dimen/user_info_height"
             android:layout_marginLeft="@dimen/user_info_marging_left"
             android:layout_width="match_parent"
+            android:id="@+id/promo"
             android:text="Epitech 2017"
             android:textColor="@color/epitech_grey_lighter"/>
         <TextView
             android:layout_height="@dimen/user_info_height"
             android:layout_marginLeft="@dimen/user_info_marging_left"
             android:layout_width="match_parent"
+            android:id="@+id/cycle"
             android:text="Cycle Bachelor"
             android:textColor="@color/epitech_grey_lighter"/>
         <LinearLayout
