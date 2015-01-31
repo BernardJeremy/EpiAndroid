@@ -208,8 +208,6 @@ public class planning extends ActionBarActivity {
 
         day = Integer.parseInt(date_week.subSequence(3, 5).toString());
         month = Integer.parseInt(date_week.subSequence(6, 8).toString()) - 1;
-        //time.set(time.get(Calendar.YEAR), month, day);
-
         day += i;
         time.set(time.get(Calendar.YEAR), month, day);
         if (day > time.getActualMaximum(Calendar.DAY_OF_MONTH))
@@ -249,7 +247,7 @@ public class planning extends ActionBarActivity {
                                     event_parent = (LinearLayout) findViewById(1000 + i);
                                     for (int j = 0; j < event_planning.length - 1; j++)
                                     {
-                                        if (/*event_planning[j].getStart().contains(dateFormat.format(time.getTime())) &&*/ event_planning[j].getSemester() == 5) // change 5 by user_semester
+                                        if (/*event_planning[j].getStart().contains(dateFormat.format(time.getTime())) &&*/ event_planning[j].getSemester() == 5 || event_planning[j].getSemester() == 0) // change 5 by user_semester
                                         {
                                             if (event_planning[j].isModule_registered())
                                             {
@@ -290,7 +288,7 @@ public class planning extends ActionBarActivity {
             event_parent = (LinearLayout) findViewById(1000 + i);
             for (int j = 0; j < event_planning.length - 1; j++)
             {
-                if (event_planning[j].getStart().contains(dateFormat.format(time.getTime())) && event_planning[j].getSemester() == 5) // change 5 by user_semester
+                if (event_planning[j].getStart().contains(dateFormat.format(time.getTime())) && (event_planning[j].getSemester() == 5 || event_planning[j].getSemester() == 0)) // change 5 by user_semester
                 {
                     if (event_planning[j].isModule_registered())
                     {

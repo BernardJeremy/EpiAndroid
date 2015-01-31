@@ -7,9 +7,10 @@
         android:layout_height="@dimen/title_height"
         android:layout_width="match_parent">
         <TextView
+            android:id="@+id/title_grades"
             android:layout_height="@dimen/title_height"
             android:layout_width="@dimen/user_title_grade"
-            android:text="@string/grades"
+            android:text=""
             android:textColor="@color/epitech_grey"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"/>
@@ -17,7 +18,4 @@
         <include layout="@layout/filters"/>
     </LinearLayout>
 
-    <include layout="@layout/table_row_blue"/>
-    <include layout="@layout/table_row"/>
-    <include layout="@layout/table_row_blue"/>
 </TableLayout>

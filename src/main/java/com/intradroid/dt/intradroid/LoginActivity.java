@@ -13,16 +13,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class LoginActivity extends ActionBarActivity {
+import org.json.JSONObject;
 
-    private String TokenJson = "00000000";
+public class LoginActivity extends ActivityManagement {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_login);
 
         final Button mButton = (Button)findViewById(R.id.connect_button);
@@ -35,51 +34,37 @@ public class LoginActivity extends ActionBarActivity {
                     public void onClick(View view)
                     {
                         try {
-                            RequestAPI request = new RequestAPI();
 
+                            System.out.println("CONNECTING");
                             String param[] = {inputLogin.getText().toString(), inputPassword.getText().toString()};
                             String paramName[] = {"login", "password"};
-                            String result = request.performQuery("login", paramName, param);
 
-                            if (!result.equals("")) {
-                                ObjectMapper mapper = new ObjectMapper();
-                                TokenJSON token = mapper.readValue(result, TokenJSON.class);
-                                TokenJson = token.getToken();
-                                Log.v("TOKEN", "Final Token get from JSON : " + TokenJson);
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("token", token.getToken());
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Bad Login or Password", Toast.LENGTH_SHORT).show();
-                            }
+                            RequestAPI.performQuery("login", paramName, param, new JsonHttpResponseHandler() {
+
+                                @Override
+                                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                                    try {
+                                        String TokenJson;
+                                        TokenJSON token = RequestAPI.getMapper().readValue(String.valueOf(response), TokenJSON.class);
+                                        TokenJson = token.getToken();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.putExtra("token", TokenJson);
+                                        startActivity(intent);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse) {
+                                    Toast.makeText(LoginActivity.this, "Bad Login or Password", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 });
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
-
-        return super.onOptionsItemSelected(item);
     }
 }

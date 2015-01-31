@@ -4,9 +4,9 @@
     android:layout_marginTop="@dimen/user_margin_block"
     android:padding="@dimen/padding_block">
     <ImageView
+        android:id="@+id/photo"
         android:layout_height="@dimen/user_info_size"
-        android:layout_width="@dimen/user_info_size"
-        android:src="@drawable/dean_winchester">
+        android:layout_width="@dimen/user_info_size">
     </ImageView>
     <LinearLayout
         android:layout_height="wrap_content"
@@ -14,35 +14,35 @@
         android:layout_width="@dimen/user_info_width"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/big_name"
             android:layout_height="@dimen/user_name_height"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/user_name_margin_top"
             android:layout_marginBottom="@dimen/user_name_margin_bottom"
-            android:id="@+id/big_name"
-            android:text="Dean Winchester"
+            android:text=""
             android:textColor="@color/epitech_grey"
             android:textSize="@dimen/user_name_size"
             android:textStyle="bold"/>
         <TextView
-            android:layout_height="@dimen/user_info_height"
-            android:layout_marginLeft="@dimen/user_info_marging_left"
-            android:layout_width="match_parent"
             android:id="@+id/login"
-            android:text="winche_d"
-            android:textColor="@color/epitech_grey_lighter"/>
-        <TextView
             android:layout_height="@dimen/user_info_height"
             android:layout_marginLeft="@dimen/user_info_marging_left"
             android:layout_width="match_parent"
+            android:text=""
+            android:textColor="@color/epitech_grey_lighter"/>
+        <TextView
             android:id="@+id/promo"
-            android:text="Epitech 2017"
-            android:textColor="@color/epitech_grey_lighter"/>
-        <TextView
             android:layout_height="@dimen/user_info_height"
             android:layout_marginLeft="@dimen/user_info_marging_left"
             android:layout_width="match_parent"
+            android:text=""
+            android:textColor="@color/epitech_grey_lighter"/>
+        <TextView
             android:id="@+id/cycle"
-            android:text="Cycle Bachelor"
+            android:layout_height="@dimen/user_info_height"
+            android:layout_marginLeft="@dimen/user_info_marging_left"
+            android:layout_width="match_parent"
+            android:text=""
             android:textColor="@color/epitech_grey_lighter"/>
         <LinearLayout
             android:layout_height="wrap_content"
@@ -58,31 +58,11 @@
                 android:textSize="@dimen/user_gpa_credit_size"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/credit"
                 android:layout_height="@dimen/user_gpa_credit_height"
                 android:layout_marginLeft="@dimen/user_info_marging_left"
                 android:layout_width="wrap_content"
-                android:text="120"
-                android:textColor="@color/epitech_grey"
-                android:textSize="@dimen/user_gpa_credit_size"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_height="@dimen/user_gpa_credit_height"
-                android:layout_marginLeft="@dimen/user_info_marging_left"
-                android:layout_width="wrap_content"
-                android:text="@string/gpa"
-                android:textColor="@color/epitech_grey"
-                android:textSize="@dimen/user_gpa_credit_size"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_height="@dimen/user_gpa_credit_height"
-                android:layout_marginLeft="@dimen/user_info_marging_left"
-                android:layout_width="wrap_content"
-                android:text="2.90"
+                android:text=""
                 android:textColor="@color/epitech_grey"
                 android:textSize="@dimen/user_gpa_credit_size"
                 android:textStyle="bold"/>

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">IntraDroid</string>
-    <string name="title_activity_main">Main</string>
+    <string name="title_activity_main">Home</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_token">Token</string>
     <string name="title_activity_user">User</string>
@@ -26,12 +26,21 @@
     <string name="empty_token">00000000</string>
     <string name="cancel">Cancel</string>
     <string name="enter">Enter</string>
-    <string name="credit">Crédits : </string>
+    <string name="credit">Credits : </string>
     <string name="gpa">G.P.A : </string>
     <string name="grades">Grades</string>
     <string name="filter">Filters</string>
     <string name="prompt_login">Login</string>
     <string name="prompt_password">Password Unix</string>
     <string name="prompt_connect">Connect</string>
+    <string name="modules_title">Modules</string>
+    <string name="grade_title">Grades</string>
+
+    <string-array name="items_menu">
+        <item>Home</item>
+        <item>Marks</item>
+        <item>Modules</item>
+        <item>Planning</item>
+    </string-array>
 
 </resources>
