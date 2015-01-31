@@ -1,50 +1,73 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.intradroid.dt.intradroid.planningActivity">
+    android:layout_height="match_parent" >
 
-    <include layout="@layout/activity_header"/>
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <ScrollView
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
-        <LinearLayout
-            android:id="@+id/day"
+        android:orientation="vertical"
+        tools:context="com.intradroid.dt.intradroid.planningActivity">
+
+        <include layout="@layout/activity_header"/>
+
+        <ScrollView
             android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:padding="@dimen/padding_block"
-            android:orientation="vertical">
+            android:layout_width="match_parent">
             <LinearLayout
-                android:background="@drawable/border"
-                android:layout_height="@dimen/planning_date"
-                android:layout_marginBottom="@dimen/planning_date"
-                android:layout_width="match_parent">
-                <Button
-                    android:background="@drawable/icon_arrow_left"
-                    android:layout_height="match_parent"
-                    android:layout_width="@dimen/planning_arrow_width"/>
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/date_week"
-                    android:layout_height="match_parent"
-                    android:layout_width="@dimen/planning_week_width"
-                    android:text="Du 00/00 au 00/00"
-                    android:textColor="@color/epitech_grey"
-                    android:textSize="@dimen/planning_week_size"
-                    android:textStyle="bold"/>
-                <Button
-                    android:background="@drawable/icon_arrow_right"
-                    android:layout_height="match_parent"
-                    android:layout_width="@dimen/planning_arrow_width"/>
+                android:id="@+id/day"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="@dimen/padding_block"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:layout_height="@dimen/planning_date"
+                    android:layout_marginBottom="@dimen/planning_date"
+                    android:layout_width="match_parent">
+                    <Button
+                        android:background="@drawable/icon_arrow_left"
+                        android:layout_height="match_parent"
+                        android:layout_width="@dimen/planning_arrow_width"/>
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/date_week"
+                        android:layout_height="match_parent"
+                        android:layout_width="@dimen/planning_week_width"
+                        android:text="Du 00/00 au 00/00"
+                        android:textColor="@color/epitech_grey"
+                        android:textSize="@dimen/planning_week_size"
+                        android:textStyle="bold"/>
+                    <Button
+                        android:background="@drawable/icon_arrow_right"
+                        android:layout_height="match_parent"
+                        android:layout_width="@dimen/planning_arrow_width"/>
+                </LinearLayout>
+
+                <include layout="@layout/filters"/>
+
+                <!-- Add days in java -->
+
             </LinearLayout>
+        </ScrollView>
 
-            <include layout="@layout/filters"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#111"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
-            <!-- Add days in java -->
+</android.support.v4.widget.DrawerLayout>
 
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>

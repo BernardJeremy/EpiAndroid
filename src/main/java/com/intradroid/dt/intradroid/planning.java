@@ -22,6 +22,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import android.text.format.Time;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
@@ -75,7 +76,7 @@ public class planning extends ActivityManagement {
         RequestAPI.performQuery("planning", paramName, param, new JsonHttpResponseHandler() {
 
             @Override
-            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONArray response) {
                 try {
                     if (!String.valueOf(response).equals("{}")) {
 
@@ -262,7 +263,7 @@ public class planning extends ActivityManagement {
                             RequestAPI.performQuery("planning", paramName, param, new JsonHttpResponseHandler() {
 
                                 @Override
-                                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject response) {
+                                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONArray response) {
                                     try {
                                         if (!String.valueOf(response).equals("{}")) {
 
