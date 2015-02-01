@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONObject;

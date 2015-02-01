@@ -145,7 +145,6 @@ public class ActivityManagement extends ActionBarActivity {
             RequestAPI.getImageQuery("https://cdn.local.epitech.eu/userprofil/profilview/" + infos.getInfos().getLogin() + ".jpg", new BinaryHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] fileData) {
-                    System.out.println("Load Img OK");
                     final ImageView photo = (ImageView) findViewById(R.id.photo);
 
                     Bitmap bmp = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);

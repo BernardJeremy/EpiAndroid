@@ -35,7 +35,6 @@ public class LoginActivity extends ActivityManagement {
                     {
                         try {
 
-                            System.out.println("CONNECTING");
                             String param[] = {inputLogin.getText().toString(), inputPassword.getText().toString()};
                             String paramName[] = {"login", "password"};
 

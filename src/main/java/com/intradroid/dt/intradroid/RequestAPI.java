@@ -110,8 +110,6 @@ public class RequestAPI {
     public static void performQuery(String type, String paramName[], String param[], JsonHttpResponseHandler responseHandler){
         try {
 
-            System.out.println("Request : " + QueryTypeMap.get(type) + " in " + RealQueryMap.get(type));
-
             if (RealQueryMap.get(type).equals("GET")) {
                get(QueryTypeMap.get(type), prepareParams(paramName, param), responseHandler);
             } else {
@@ -126,7 +124,6 @@ public class RequestAPI {
     public static void performDelete(String type, String paramName[], String param[], Context context,JsonHttpResponseHandler responseHandler){
         try {
 
-            System.out.println("Request : " + QueryTypeMap.get(type) + " in delete");
             client.delete(context, getAbsoluteUrl(url), null, prepareParams(paramName, param), responseHandler);
 
         } catch (Exception e) {
