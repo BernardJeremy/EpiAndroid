@@ -4,6 +4,7 @@ package com.intradroid.dt.intradroid;
  * Created by bernar_w on 13/01/2015.
  */
 
+import android.content.Context;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,6 +46,7 @@ public class RequestAPI {
         QueryTypeMap.put("photo", "photo");
         QueryTypeMap.put("token", "token");
         QueryTypeMap.put("trombi", "trombi");
+        QueryTypeMap.put("user", "user");
     }
 
     final static private Hashtable<String, String> RealQueryMap;
@@ -75,6 +77,7 @@ public class RequestAPI {
         RealQueryMap.put("photo", "GET");
         RealQueryMap.put("token", "POST");
         RealQueryMap.put("trombi", "GET");
+        RealQueryMap.put("user", "GET");
     }
 
     private RequestAPI() {
@@ -114,6 +117,17 @@ public class RequestAPI {
             } else {
                post(QueryTypeMap.get(type), prepareParams(paramName, param), responseHandler);
             }
+
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
+        }
+    }
+
+    public static void performDelete(String type, String paramName[], String param[], Context context,JsonHttpResponseHandler responseHandler){
+        try {
+
+            System.out.println("Request : " + QueryTypeMap.get(type) + " in delete");
+            client.delete(context, getAbsoluteUrl(url), null, prepareParams(paramName, param), responseHandler);
 
         } catch (Exception e) {
             Log.v("EXCEPTION", e.toString());

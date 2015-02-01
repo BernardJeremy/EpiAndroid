@@ -9,6 +9,7 @@
     <string name="title_activity_planning">Planning</string>
     <string name="title_activity_filter">Filter</string>
     <string name="title_activity_header">Header</string>
+    <string name="title_activity_rapport">User Info</string>
     <string name="action_settings">Settings</string>
 
     <string name="category_name">Intranet</string>

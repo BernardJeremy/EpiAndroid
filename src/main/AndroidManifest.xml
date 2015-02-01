@@ -45,6 +45,10 @@
             android:name=".Header"
             android:label="@string/title_activity_header" >
         </activity>
+        <activity
+            android:name=".Rapport"
+            android:label="@string/title_activity_rapport" >
+        </activity>
     </application>
 
 </manifest>
