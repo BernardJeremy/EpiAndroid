@@ -52,7 +52,7 @@ public class RequestAPI {
     final static private Hashtable<String, String> RealQueryMap;
     static {
         RealQueryMap = new Hashtable<String, String>();
-        RealQueryMap.put("login", "GET");
+        RealQueryMap.put("login", "POST");
         RealQueryMap.put("infos", "POST");
         RealQueryMap.put("planning", "GET");
         RealQueryMap.put("all_susies", "GET");

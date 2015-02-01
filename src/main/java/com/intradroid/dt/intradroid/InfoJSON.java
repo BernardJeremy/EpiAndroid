@@ -25,7 +25,17 @@ public class InfoJSON {
 
         private String email;
 
+        private String semester;
+
         public infos() {
+        }
+
+        public String getSemester() {
+            return semester;
+        }
+
+        public void setSemester(String semester) {
+            this.semester = semester;
         }
 
         public String getPromo() {

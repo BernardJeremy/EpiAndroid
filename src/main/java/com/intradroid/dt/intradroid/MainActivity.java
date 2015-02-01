@@ -51,6 +51,8 @@ public class MainActivity extends ActivityManagement {
                         initMenuDrawer();
                         Header.searchOnEvent((ImageView) findViewById(R.id.search_button), (EditText) findViewById(R.id.input_search), MainActivity.this, token);
 
+                        semesterCurrent = infos.getInfos().getSemester();
+
                         setProfileImage(infos);
                         setAllData(infos);
 

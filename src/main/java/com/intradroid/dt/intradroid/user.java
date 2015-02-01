@@ -51,6 +51,8 @@ public class user extends ActivityManagement {
 
                     InfoJSON infos = RequestAPI.getMapper().readValue(result, InfoJSON.class);
 
+                    semesterCurrent = infos.getInfos().getSemester();
+
                     setAllData(infos);
                     setProfileImage(infos);
 

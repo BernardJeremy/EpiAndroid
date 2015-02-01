@@ -32,6 +32,8 @@ public class ActivityManagement extends ActionBarActivity {
     protected String token;
     protected int current;
 
+    protected String semesterCurrent;
+
     public ActivityManagement ()
     {
     }
@@ -101,6 +103,7 @@ public class ActivityManagement extends ActionBarActivity {
         if (position != 0 && intent != null && this.current != position) {
             intent.putExtra("token", token);
             intent.putExtra("isMark", isMark);
+            intent.putExtra("semester", semesterCurrent);
             startActivity(intent);
         } else if (intent != null){
             Toast.makeText(this, "Already on this page !", Toast.LENGTH_SHORT).show();
