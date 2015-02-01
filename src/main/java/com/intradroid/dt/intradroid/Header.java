@@ -38,7 +38,6 @@ public class Header extends ActionBarActivity {
                     Intent intent = new Intent(context, Rapport.class);
                     intent.putExtra("token", token);
                     String user = input.getText().toString();
-                    System.out.println("IN HEADER : " + user);
                     intent.putExtra("user", user);
                     context.startActivity(intent);
                     return true;
